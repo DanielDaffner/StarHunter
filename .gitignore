@@ -1,0 +1,14 @@
+Logs/*
+Library/*
+ProjectSettings/*
+Assembly-CSharp.csproj
+StarHunter.sln
+Unity.CollabProxy.Editor
+Unity.Rider.Editor
+Unity.TextMeshPro
+Unity.TextMeshPro.Editor
+Unity.Timeline
+Unity.Timeline.Editor
+Unity.VSCode.Editor
+UnityEditor.TestRunner
+UnityEngine.TestRunner
