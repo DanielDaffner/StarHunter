@@ -2,10 +2,6 @@
 /*/
 
 !.gitignore
-!/StarHunter/Assets/
-!/StarHunter/Assets/Prefabs/
-!/StarHunter/Assets/Resources/
-!/StarHunter/Assets/Scenes/
-!/StarHunter/Assets/Scripts/
-!/StarHunter/ProjectSettings/
-!/StarHunter/Packages/
+!./StarHunter/Assets/
+!./StarHunter/ProjectSettings/
+!./StarHunter/Packages/
