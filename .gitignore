@@ -3,5 +3,9 @@
 
 !.gitignore
 !/Assets/
+!/Assets/Prefabs/
+!/Assets/Resources/
+!/Assets/Scenes/
+!/Assets/Scripts/
 !/ProjectSettings/
 !/Packages/
