@@ -1,7 +1,6 @@
-/*
-/*/
-
+*
+!*/
 !.gitignore
-!StarHunter/Assets/
-!StarHunter/ProjectSettings/
-!StarHunter/Packages/
+!StarHunter/Assets/**
+!StarHunter/ProjectSettings/**
+!StarHunter/Packages/**
