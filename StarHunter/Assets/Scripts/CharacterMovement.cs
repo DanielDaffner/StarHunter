@@ -9,9 +9,10 @@ public class CharacterMovement : MonoBehaviour
 {
     public CharacterController controller;
 
-    public float speed = 6f;
+    public float speed = 5f;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
+    public float rotateSpeed = 0.6f;
 
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
@@ -19,6 +20,8 @@ public class CharacterMovement : MonoBehaviour
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
+
+    public Transform playerBody;
 
     Vector3 velocity;
 
@@ -36,18 +39,17 @@ public class CharacterMovement : MonoBehaviour
     {
         if (!photonView.IsMine) return;
 
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
 
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+        Vector3 move = transform.right * x + transform.forward * z;
 
-        if (direction.magnitude >= 0.1f)
-        {
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
-            controller.Move(direction * speed * Time.deltaTime);
-        }
+        controller.Move(move * speed * Time.deltaTime );
+
+        transform.Rotate(0, Input.GetAxis("Horizontal") * rotateSpeed, 0);
+        var forward = transform.TransformDirection(Vector3.forward);
+        float curSpeed = speed * Input.GetAxis("Vertical");
+        controller.SimpleMove(forward * curSpeed);
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
@@ -65,8 +67,8 @@ public class CharacterMovement : MonoBehaviour
         {
             print("Mid Air!");
             velocity.y += gravity * Time.deltaTime;
-            controller.Move(velocity * Time.deltaTime);
+           
         }
-        
+        controller.Move(velocity * Time.deltaTime);
     }
 }
