@@ -27,7 +27,7 @@ public class StarSwitch : MonoBehaviour
         {
             photonView.GetComponent<MeshRenderer>().enabled = true;
 
-            time2 = Time.timeSinceLevelLoad;
+            timeOn = Time.timeSinceLevelLoad;
 
         }
     }
@@ -39,7 +39,7 @@ public class StarSwitch : MonoBehaviour
         {
             photonView.GetComponent<MeshRenderer>().enabled = false;
 
-            time2 = Time.timeSinceLevelLoad;
+            timeOn = Time.timeSinceLevelLoad;
 
         }
     }
