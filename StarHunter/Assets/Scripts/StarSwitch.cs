@@ -8,8 +8,8 @@ using Photon.Pun;
 public class StarSwitch : MonoBehaviour
 {
     private PhotonView photonView;
-    private System.DateTime time;
-    private float time2;
+    private float timeOn;
+    private float timeOff;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +23,7 @@ public class StarSwitch : MonoBehaviour
     void switchOn()
     {
 
-        if (Time.timeSinceLevelLoad > time2 )
+        if (Time.timeSinceLevelLoad > timeOn+1  )
         {
             photonView.GetComponent<MeshRenderer>().enabled = true;
 
@@ -35,7 +35,7 @@ public class StarSwitch : MonoBehaviour
     [PunRPC]
     void switchOff()
     {
-        if (Time.timeSinceLevelLoad > time2+2 )
+        if (Time.timeSinceLevelLoad > timeOn+1)
         {
             photonView.GetComponent<MeshRenderer>().enabled = false;
 
