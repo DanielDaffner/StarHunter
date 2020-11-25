@@ -28,7 +28,7 @@ public class PlayerCollision_Own : MonoBehaviour
                 
             }
 
-            else if (me)
+            else if (me && !you)
             {
                 print("Krone Weg!");
                 // other.transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled = false;
