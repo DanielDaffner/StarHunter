@@ -1,22 +1,51 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class PlayerCollision_Own : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision col)
+
+    public GameObject player;
+ 
+
+    private void OnTriggerEnter(Collider other)
     {
 
-        print("Collision");
-        if(col.gameObject.tag == "Player")
+     
+            print("Collision");
+        if (other.gameObject.tag == "Player" && other.gameObject !=transform.gameObject)
         {
-            print("KROOONE!!");
+           
+            print("Krone?");
+            bool tmp =  other.transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled;
+            print(tmp);
+
+            if (tmp)
+            {
+                print("GIB KROOONE!!");
+               // other.transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled = false;
+                transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled = true;
+                
+
+
+            }
+            if (!tmp)
+            {
+                print("Keine KROOONE!!");
+                // other.transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled = false;
+                transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled = false;
+
+
+
+            }
+
+
         }
 
-        if (col.gameObject.tag == "Cube")
-        {
-            print("Cuube!!");
-        }
-        
+
+    
     }
 }
+
+
