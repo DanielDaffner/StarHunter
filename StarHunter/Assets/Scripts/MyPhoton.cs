@@ -22,7 +22,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     {
         RoomOptions roomOptions = new RoomOptions();
         roomOptions.MaxPlayers = 4;
-        PhotonNetwork.JoinOrCreateRoom("Room 1", roomOptions, null);
+        PhotonNetwork.JoinOrCreateRoom("Room 2", roomOptions, null);
     }
 
     public override void OnJoinedRoom()
@@ -41,6 +41,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         {
             GameObject star = newPlayer.transform.Find("StarGhost").gameObject;
             star.GetComponent<MeshRenderer>().enabled = true;
+            print(PhotonNetwork.IsMasterClient);
         }
 
         // if (newPlayer.GetComponent<PhotonView>().ViewID == 1002)

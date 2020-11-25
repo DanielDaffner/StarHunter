@@ -194,7 +194,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33f1c81ffb39c4a488751f32d32beab9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 5122895208204674904}
 --- !u!1 &6943962195170640137
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,6 +317,18 @@ Transform:
   m_Father: {fileID: 1414343452044896524}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2877005122816474678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8892832890560280164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97f92250d23e7424c98db673a14ce04b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1524052910663500177
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -405,10 +416,26 @@ PrefabInstance:
       propertyPath: viewIdField
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8281330285957920387, guid: 91140d9704eefe647aa44772ac85144d,
+        type: 3}
+      propertyPath: OwnershipTransfer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8281330285957920387, guid: 91140d9704eefe647aa44772ac85144d,
+        type: 3}
+      propertyPath: Synchronization
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7948631696063002618, guid: 91140d9704eefe647aa44772ac85144d, type: 3}
     - {fileID: 7948631696063002614, guid: 91140d9704eefe647aa44772ac85144d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 91140d9704eefe647aa44772ac85144d, type: 3}
+--- !u!1 &8892832890560280164 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7948631696063002613, guid: 91140d9704eefe647aa44772ac85144d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1524052910663500177}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8892832890560280168 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7948631696063002617, guid: 91140d9704eefe647aa44772ac85144d,

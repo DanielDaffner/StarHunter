@@ -6,43 +6,47 @@ using Photon.Pun;
 public class PlayerCollision_Own : MonoBehaviour
 {
 
-    public GameObject player;
-    PhotonView photonView;
+    PhotonView photonViewPlayer;
+    PhotonView photonViewStarOwn;
+    PhotonView photonViewStarOther;
 
-    private void Start()
-    {
-        photonView = GetComponent<PhotonView>();
-    }
 
     private void OnTriggerEnter(Collider other)
     {
-
-        if (!photonView.IsMine)
+        photonViewPlayer = GetComponent<PhotonView>();
+        photonViewStarOwn = transform.Find("StarGhost").GetComponent<PhotonView>();
+        photonViewStarOther = other.transform.Find("StarGhost").GetComponent<PhotonView>();
+        if (!photonViewPlayer.IsMine)
         {
             print("not mine!");
             return;
+           
         }
 
-        print("Collision called from "+photonView.ViewID);
+        print("Collision called from ");
+        print(photonViewPlayer.ViewID);
+        
         if (other.gameObject.tag == "Player" && other.gameObject !=transform.gameObject)
         {
-            bool you =  other.transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled
+            bool you = other.transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled;
           
             bool me = transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled;
 
             if (you)
             {
                 print("GIB KROOONE!!");
-               // other.transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled = false;
-                transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled = true;
-                
+                // other.transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled = false;
+                photonViewStarOwn.RPC("switchOn", RpcTarget.All);
+                photonViewStarOther.RPC("switchOff", RpcTarget.All);
+
             }
 
             else if (me && !you)
             {
                 print("Krone Weg!");
                 // other.transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled = false;
-                transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled = false;
+                photonViewStarOwn.RPC("switchOff", RpcTarget.All);
+                photonViewStarOther.RPC("switchOn", RpcTarget.All);
             }
 
         }
