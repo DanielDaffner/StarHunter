@@ -14,7 +14,7 @@ public class StarSwitch : MonoBehaviour
     void Start()
     {
         photonView = GetComponent<PhotonView>();
-        time = System.DateTime.Now;
+      
         timeOn = Time.timeSinceLevelLoad;
         timeOff = Time.timeSinceLevelLoad;
     }
