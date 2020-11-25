@@ -9,7 +9,7 @@ public class StarSwitch : MonoBehaviour
 {
     private PhotonView photonView;
     private System.DateTime time;
-    private Time time2;
+    private float time2;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +23,7 @@ public class StarSwitch : MonoBehaviour
     void switchOn()
     {
 
-        if (Time.timeSinceLevelLoad > time2 + 2)
+        if (Time.timeSinceLevelLoad > time2 )
         {
             photonView.GetComponent<MeshRenderer>().enabled = true;
 
