@@ -13,8 +13,12 @@ public class PlayerCollision_Own : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
+        transform.GetComponent<CapsuleCollider>().enabled = false;
+
         photonViewPlayer = GetComponent<PhotonView>();
         photonViewStarOwn = transform.Find("StarGhost").GetComponent<PhotonView>();
+
         photonViewStarOther = other.transform.Find("StarGhost").GetComponent<PhotonView>();
         if (!photonViewPlayer.IsMine)
         {
@@ -36,8 +40,10 @@ public class PlayerCollision_Own : MonoBehaviour
             {
                 print("GIB KROOONE!!");
                 // other.transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled = false;
-                photonViewStarOwn.RPC("switchOn", RpcTarget.All);
                 photonViewStarOther.RPC("switchOff", RpcTarget.All);
+            
+                photonViewStarOwn.RPC("switchOn", RpcTarget.All);
+                
 
             }
 
@@ -52,7 +58,7 @@ public class PlayerCollision_Own : MonoBehaviour
         }
 
 
-    
+        transform.GetComponent<CapsuleCollider>().enabled = true;
     }
 }
 
