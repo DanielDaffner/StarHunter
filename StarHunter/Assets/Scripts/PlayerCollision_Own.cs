@@ -16,34 +16,24 @@ public class PlayerCollision_Own : MonoBehaviour
             print("Collision");
         if (other.gameObject.tag == "Player" && other.gameObject !=transform.gameObject)
         {
-           
-            print("Du Krone?");
-            bool tmp =  other.transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled;
+            bool you =  other.transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled;
             print(tmp);
+            bool me = transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled;
 
-            if (tmp)
+            if (you)
             {
                 print("GIB KROOONE!!");
                // other.transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled = false;
                 transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled = true;
                 
-
-
             }
 
-            print("Ich Krone?");
-            tmp = transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled;
-
-            if (tmp)
+            else if (me)
             {
                 print("Krone Weg!");
                 // other.transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled = false;
                 transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled = false;
-
-
-
             }
-
 
         }
 
