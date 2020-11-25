@@ -7,16 +7,26 @@ public class PlayerCollision_Own : MonoBehaviour
 {
 
     public GameObject player;
- 
+    PhotonView photonView;
+
+    private void Start()
+    {
+        photonView = GetComponent<PhotonView>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
 
-     
-            print("Collision");
+        if (!photonView.IsMine)
+        {
+            print("not mine!");
+            return;
+        }
+
+        print("Collision called from "+photonView.ViewID);
         if (other.gameObject.tag == "Player" && other.gameObject !=transform.gameObject)
         {
-            bool you =  other.transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled;
+            bool you =  other.transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled
           
             bool me = transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled;
 

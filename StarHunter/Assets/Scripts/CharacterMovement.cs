@@ -65,7 +65,7 @@ public class CharacterMovement : MonoBehaviour
 
         if (!isGrounded)
         {
-            print("Mid Air!");
+           // print("Mid Air!");
             velocity.y += gravity * Time.deltaTime;
            
         }
