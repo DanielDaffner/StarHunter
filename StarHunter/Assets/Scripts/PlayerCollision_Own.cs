@@ -17,7 +17,7 @@ public class PlayerCollision_Own : MonoBehaviour
         if (other.gameObject.tag == "Player" && other.gameObject !=transform.gameObject)
         {
            
-            print("Krone?");
+            print("Du Krone?");
             bool tmp =  other.transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled;
             print(tmp);
 
@@ -30,9 +30,13 @@ public class PlayerCollision_Own : MonoBehaviour
 
 
             }
-            if (!tmp)
+
+            print("Ich Krone?");
+            tmp = transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled;
+
+            if (tmp)
             {
-                print("Keine KROOONE!!");
+                print("Krone Weg!");
                 // other.transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled = false;
                 transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled = false;
 
