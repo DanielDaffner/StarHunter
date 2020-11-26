@@ -4012,7 +4012,7 @@ MonoBehaviour:
   mRed: {fileID: 2100000, guid: 36d6940a068d5f249a35c22cfb24ee93, type: 2}
   mGreen: {fileID: 2100000, guid: 7fa0c681d1086f248b2cd0633e0b279c, type: 2}
   mBlue: {fileID: 2100000, guid: 81972e6e2b80bb048b486ea338478b59, type: 2}
-  mYellow: {fileID: 0}
+  mYellow: {fileID: 2100000, guid: fc6788053b7109a4798dc69dda39b50d, type: 2}
   spawn1: {x: 7.5, y: 6.6, z: 12.5}
   spawn2: {x: 1, y: 6.6, z: -15.5}
   spawn3: {x: -20, y: 4.8, z: -6.5}
