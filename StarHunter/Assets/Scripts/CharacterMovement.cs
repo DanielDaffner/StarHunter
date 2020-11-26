@@ -39,8 +39,10 @@ public class CharacterMovement : MonoBehaviour
     void Update()
     {
         if (!photonView.IsMine) return;
+
         //test
-        transform.Rotate(0, Input.GetAxis("RSY") * 120 * Time.deltaTime, 0);
+        transform.Rotate(0, Input.GetAxis("Rotate") * 120 * Time.deltaTime, 0);
+
         //Movement
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
@@ -52,11 +54,11 @@ public class CharacterMovement : MonoBehaviour
         //Rotation
 
 
-        print(Input.GetAxis("RSY"));
+       // print(Input.GetAxis("Rotate"));
        
-      //  var forward = transform.TransformDirection(Vector3.forward);
-      //  float curSpeed = speed * Input.GetAxis("RSY");
-     // controller.SimpleMove(forward * curSpeed);
+        //var forward = transform.TransformDirection(Vector3.forward);
+        
+        //controller.SimpleMove(forward * speed);
    
 
         //Gravity
@@ -67,7 +69,7 @@ public class CharacterMovement : MonoBehaviour
             velocity.y = -2f;
         }
 
-        if(Input.GetButtonDown("Jump"))
+        if(Input.GetButtonDown("Jump")&&isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
