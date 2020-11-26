@@ -33,6 +33,7 @@ public class CharacterMovement : MonoBehaviour
     private void Start()
     {
         photonView = GetComponent<PhotonView>();
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -41,11 +42,11 @@ public class CharacterMovement : MonoBehaviour
         if (!photonView.IsMine) return;
 
         //test
-        transform.Rotate(0, Input.GetAxis("Rotate") * 120 * Time.deltaTime, 0);
+        transform.Rotate(0, Input.GetAxisRaw("Rotate") * 120 * Time.deltaTime, 0);
 
         //Movement
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        float x = Input.GetAxisRaw("Horizontal");
+        float z = Input.GetAxisRaw("Vertical");
 
         Vector3 move = transform.right * x + transform.forward * z;
 
