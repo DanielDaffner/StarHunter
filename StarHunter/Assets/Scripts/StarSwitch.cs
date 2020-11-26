@@ -9,16 +9,16 @@ public class StarSwitch : MonoBehaviour
 {
 
     
-    private PhotonView photonView;
+    public PhotonView photonView;
     private float timeOn;
     private float timeOff;
     // Start is called before the first frame update
     void Start()
     {
-        photonView = GetComponent<PhotonView>();
+       //photonView = GetComponent<PhotonView>();
       
-        timeOn = Time.timeSinceLevelLoad;
-        timeOff = Time.timeSinceLevelLoad;
+       // timeOn = Time.timeSinceLevelLoad;
+       //timeOff = Time.timeSinceLevelLoad;
     }
 
    

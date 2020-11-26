@@ -68,9 +68,10 @@ public class MyPhoton : MonoBehaviourPunCallbacks
 
         if (PhotonNetwork.PlayerList.Length==1)
         {
-            GameObject star = newPlayer.transform.Find("StarGhost").gameObject;
-            star.GetComponent<MeshRenderer>().enabled = true;
+           // GameObject star = newPlayer.transform.Find("StarGhost").gameObject;
+            
             print(PhotonNetwork.IsMasterClient);
+           newPlayer.transform.Find("StarGhost").GetComponent<PhotonView>().RPC("switchOn", RpcTarget.AllBuffered);
             newPlayer.GetComponent<PhotonView>().RPC("setMaterialRed", RpcTarget.AllBuffered);
         }
 
