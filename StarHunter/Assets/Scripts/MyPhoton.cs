@@ -17,7 +17,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
 
 
     public Vector3 spawn1 = new Vector3(7.5f, 6.6f, 12.5f);
-    public Vector3 spawn2 = new Vector3(1f, 6.6f, -15.5f);
+    public Vector3 spawn2 = new Vector3(11f, 6.6f, -15.5f);
     public Vector3 spawn3 = new Vector3(-20f, 4.8f, -6.5f);
     public Vector3 spawn4 = new Vector3(-17.5f, 4.8f, 13.5f);
 

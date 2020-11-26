@@ -4176,6 +4176,10 @@ MonoBehaviour:
   mGreen: {fileID: 2100000, guid: 7fa0c681d1086f248b2cd0633e0b279c, type: 2}
   mBlue: {fileID: 2100000, guid: 81972e6e2b80bb048b486ea338478b59, type: 2}
   mYellow: {fileID: 0}
+  spawn1: {x: 7.5, y: 6.6, z: 12.5}
+  spawn2: {x: 1, y: 6.6, z: -15.5}
+  spawn3: {x: -20, y: 4.8, z: -6.5}
+  spawn4: {x: -17.5, y: 4.8, z: 13.5}
 --- !u!4 &196168868
 Transform:
   m_ObjectHideFlags: 0
@@ -11852,7 +11856,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 658997383}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.98, y: 6.3199997, z: -8}
+  m_LocalPosition: {x: 12.98, y: 19, z: -21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1430827042}
@@ -12100,7 +12104,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 779744507}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.98, y: 6.3199997, z: -7.89}
+  m_LocalPosition: {x: 12.98, y: 19, z: -21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -20507,7 +20511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 2.5, z: 1.6400003}
+  m_FollowOffset: {x: 0, y: 15.18, z: -11.36}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
