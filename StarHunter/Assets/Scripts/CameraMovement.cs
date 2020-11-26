@@ -26,7 +26,7 @@ public class CameraMovement : MonoBehaviour
         float mouse_y = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
 
         rotation_x -= mouse_y;
-        rotation_x = Mathf.Clamp(rotation_x, -90f, 90f);
+        rotation_x = Mathf.Clamp(rotation_x, -70f, 70f);
 
         transform.localRotation = Quaternion.Euler(rotation_x, 0f, 0f);
         if(player == null) {
