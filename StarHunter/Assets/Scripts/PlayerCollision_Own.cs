@@ -15,8 +15,8 @@ public class PlayerCollision_Own : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-   
-    
+
+        if (other.isTrigger) return;
         transform.GetComponent<CapsuleCollider>().enabled = false;
         photonViewPlayer = GetComponent<PhotonView>();
         photonViewStarOwn = transform.Find("StarGhost").GetComponent<PhotonView>();
