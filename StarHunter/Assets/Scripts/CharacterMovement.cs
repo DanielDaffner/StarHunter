@@ -35,7 +35,7 @@ public class CharacterMovement : MonoBehaviour
     private void Start()
     {
         photonView = GetComponent<PhotonView>();
-        
+
     }
 
     // Update is called once per frame
@@ -43,6 +43,8 @@ public class CharacterMovement : MonoBehaviour
     {
         if (!photonView.IsMine) return;
 
+
+        //Movement
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
@@ -50,14 +52,8 @@ public class CharacterMovement : MonoBehaviour
 
         controller.Move(move * speed * Time.deltaTime );
 
-        transform.Rotate(0, Input.GetAxis("Horizontal") * rotateSpeed, 0);
 
-        //transform.Rotate(GameObject.FindGameObjectWithTag("MainCamera").transform.rotation.eulerAngles);
-      
-        var forward = transform.TransformDirection(Vector3.forward);
-        float curSpeed = speed * Input.GetAxis("Vertical");
-        controller.SimpleMove(forward * curSpeed);
-
+        //Gravity
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if(isGrounded && velocity.y < 0)
@@ -74,13 +70,16 @@ public class CharacterMovement : MonoBehaviour
         {
            // print("Mid Air!");
             velocity.y += gravity * Time.deltaTime;
-           
+
         }
 
-        
+
 
         controller.Move(velocity * Time.deltaTime);
 
+
+
+        //Hit
         if (Input.GetMouseButton(0))
         {
             print("try hit");
@@ -92,6 +91,6 @@ public class CharacterMovement : MonoBehaviour
 
     }
 
-   
+
 
 }
