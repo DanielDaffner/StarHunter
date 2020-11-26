@@ -9,11 +9,12 @@ public class PlayerCollision_Own : MonoBehaviour
     PhotonView photonViewPlayer;
     PhotonView photonViewStarOwn;
     PhotonView photonViewStarOther;
-
+    public static int starTime = 0;
 
     private void OnTriggerEnter(Collider other)
     {
-
+   
+        starTime = PhotonNetwork.ServerTimestamp;
         transform.GetComponent<CapsuleCollider>().enabled = false;
 
         photonViewPlayer = GetComponent<PhotonView>();
@@ -38,17 +39,19 @@ public class PlayerCollision_Own : MonoBehaviour
 
             if (you)
             {
+               
                 print("GIB KROOONE!!");
                 // other.transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled = false;
                 photonViewStarOther.RPC("switchOff", RpcTarget.All);
             
                 photonViewStarOwn.RPC("switchOn", RpcTarget.All);
-                
+              
 
             }
 
             else if (me && !you)
             {
+               
                 print("Krone Weg!");
                 // other.transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled = false;
                 photonViewStarOwn.RPC("switchOff", RpcTarget.All);
