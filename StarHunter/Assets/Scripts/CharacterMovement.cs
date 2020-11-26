@@ -33,6 +33,7 @@ public class CharacterMovement : MonoBehaviour
     private void Start()
     {
         photonView = GetComponent<PhotonView>();
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
