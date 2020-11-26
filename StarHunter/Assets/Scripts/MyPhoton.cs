@@ -60,9 +60,10 @@ public class MyPhoton : MonoBehaviourPunCallbacks
 
 
         GameObject newPlayer = PhotonNetwork.Instantiate("Character1", spawn, Quaternion.identity);
+        GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>().transform.position = newPlayer.transform.position;
         GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>().transform.parent = newPlayer.transform;
-        GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>().transform.localPosition += new Vector3(0, 3, -5);
-        GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>().transform.localRotation = Quaternion.Euler(15f, 0f, 0f);
+        GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>().transform.localPosition = new Vector3(0, 3, -6);
+        //GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>().transform.localRotation = Quaternion.Euler(15f, 0f, 0f);
 
 
         if (PhotonNetwork.PlayerList.Length==1)

@@ -183,6 +183,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 1024
+  is_doublejump_available: 1
   playerBody: {fileID: 1414343452044896524}
 --- !u!114 &8575266467277286243
 MonoBehaviour:

@@ -51,20 +51,6 @@ public class CharacterMovement : MonoBehaviour
 
         controller.Move(move * speed * Time.deltaTime );
 
-<<<<<<< HEAD
-=======
-        //Rotation
-
-
-       // print(Input.GetAxis("Rotate"));
-       
-        //var forward = transform.TransformDirection(Vector3.forward);
-        
-        //controller.SimpleMove(forward * speed);
-   
-
-        //Gravity
->>>>>>> dev
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if(isGrounded && velocity.y < 0)
@@ -73,11 +59,8 @@ public class CharacterMovement : MonoBehaviour
             is_doublejump_available = true;
         }
 
-<<<<<<< HEAD
-        if (Input.GetButtonDown("Jump") )
-=======
-        if(Input.GetButtonDown("Jump")&&isGrounded)
->>>>>>> dev
+
+        if(Input.GetButtonDown("Jump"))
         {
             if(isGrounded) {
                 velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
