@@ -31,7 +31,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     {
         RoomOptions roomOptions = new RoomOptions();
         roomOptions.MaxPlayers = 4;
-        PhotonNetwork.JoinOrCreateRoom("Room 2", roomOptions, null);
+        PhotonNetwork.JoinOrCreateRoom("Room 1", roomOptions, null);
     }
 
     public override void OnJoinedRoom()
