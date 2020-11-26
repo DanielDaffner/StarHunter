@@ -8,8 +8,9 @@ using Photon.Realtime;
 public class CharacterMovement : MonoBehaviour
 {
     public CharacterController controller;
+    public PlayerCollision_Own playerCollision_Own;
 
-    public float speed = 5f;
+    public float speed = 15f;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
     public float rotateSpeed = 0.6f;
@@ -39,6 +40,10 @@ public class CharacterMovement : MonoBehaviour
     {
         if (!photonView.IsMine) return;
 
+        //test
+        transform.Rotate(0, Input.GetAxis("Rotate") * 120 * Time.deltaTime, 0);
+
+        //Movement
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
@@ -46,6 +51,20 @@ public class CharacterMovement : MonoBehaviour
 
         controller.Move(move * speed * Time.deltaTime );
 
+<<<<<<< HEAD
+=======
+        //Rotation
+
+
+       // print(Input.GetAxis("Rotate"));
+       
+        //var forward = transform.TransformDirection(Vector3.forward);
+        
+        //controller.SimpleMove(forward * speed);
+   
+
+        //Gravity
+>>>>>>> dev
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if(isGrounded && velocity.y < 0)
@@ -54,7 +73,11 @@ public class CharacterMovement : MonoBehaviour
             is_doublejump_available = true;
         }
 
+<<<<<<< HEAD
         if (Input.GetButtonDown("Jump") )
+=======
+        if(Input.GetButtonDown("Jump")&&isGrounded)
+>>>>>>> dev
         {
             if(isGrounded) {
                 velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
@@ -66,10 +89,26 @@ public class CharacterMovement : MonoBehaviour
 
         if (!isGrounded)
         {
-            print("Mid Air!");
+           // print("Mid Air!");
             velocity.y += gravity * Time.deltaTime;
            
         }
         controller.Move(velocity * Time.deltaTime);
+
+
+
+        //Hit
+        if (Input.GetMouseButton(0))
+        {
+            print("try hit");
+        }
+        if (Input.GetMouseButton(0) && playerCollision_Own.ableToHit)
+        {
+            playerCollision_Own.hit();
+        }
+
     }
+
+   
+
 }
