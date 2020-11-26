@@ -9,14 +9,15 @@ public class PlayerCollision_Own : MonoBehaviour
     PhotonView photonViewPlayer;
     PhotonView photonViewStarOwn;
     PhotonView photonViewStarOther;
-    public static int starTime = 0;
+    public bool ableToHit = false;
+
+  
 
     private void OnTriggerEnter(Collider other)
     {
    
-        starTime = PhotonNetwork.ServerTimestamp;
+    
         transform.GetComponent<CapsuleCollider>().enabled = false;
-
         photonViewPlayer = GetComponent<PhotonView>();
         photonViewStarOwn = transform.Find("StarGhost").GetComponent<PhotonView>();
 
@@ -34,34 +35,25 @@ public class PlayerCollision_Own : MonoBehaviour
         if (other.gameObject.tag == "Player" && other.gameObject !=transform.gameObject)
         {
             bool you = other.transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled;
-          
-            bool me = transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled;
-
-            if (you)
-            {
-               
-                print("GIB KROOONE!!");
-                // other.transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled = false;
-                photonViewStarOther.RPC("switchOff", RpcTarget.All);
-            
-                photonViewStarOwn.RPC("switchOn", RpcTarget.All);
-              
-
-            }
-
-            else if (me && !you)
-            {
-               
-                print("Krone Weg!");
-                // other.transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled = false;
-                photonViewStarOwn.RPC("switchOff", RpcTarget.All);
-                photonViewStarOther.RPC("switchOn", RpcTarget.All);
-            }
-
+            ableToHit = true;
+            print("able to hit");
         }
 
 
         transform.GetComponent<CapsuleCollider>().enabled = true;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        ableToHit = false;
+        print("not able to hit anymore");
+    }
+
+    public void hit()
+    {
+        print("hit");
+        photonViewStarOther.RPC("switchOff", RpcTarget.All);
+        photonViewStarOwn.RPC("switchOn", RpcTarget.All);
     }
 }
 

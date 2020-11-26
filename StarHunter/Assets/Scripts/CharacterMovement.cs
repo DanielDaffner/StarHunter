@@ -8,6 +8,7 @@ using Photon.Realtime;
 public class CharacterMovement : MonoBehaviour
 {
     public CharacterController controller;
+    public PlayerCollision_Own playerCollision_Own;
 
     public float speed = 5f;
     public float gravity = -9.81f;
@@ -70,5 +71,18 @@ public class CharacterMovement : MonoBehaviour
            
         }
         controller.Move(velocity * Time.deltaTime);
+
+        if (Input.GetMouseButton(0))
+        {
+            print("try hit");
+        }
+        if (Input.GetMouseButton(0) && playerCollision_Own.ableToHit)
+        {
+            playerCollision_Own.hit();
+        }
+
     }
+
+   
+
 }
