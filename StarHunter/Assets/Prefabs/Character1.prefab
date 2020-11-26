@@ -62,7 +62,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6577714873974779750}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.017923113, z: 0, w: 0.9998394}
   m_LocalPosition: {x: 13, y: 4, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -205,12 +205,14 @@ MonoBehaviour:
   speed: 6
   gravity: -19.62
   jumpHeight: 2
+  rotateSpeed: 0.6
   turnSmoothTime: 0.1
   groundCheck: {fileID: 6577714873791159057}
   groundDistance: 0.4
   groundMask:
     serializedVersion: 2
     m_Bits: 1024
+  playerBody: {fileID: 0}
 --- !u!114 &39239712050000880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,6 +345,7 @@ GameObject:
   - component: {fileID: 8763464808654996193}
   - component: {fileID: 8763464808654996194}
   - component: {fileID: 8763464808654996195}
+  - component: {fileID: 7360913233657904890}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -415,3 +418,16 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8763464808654996196}
   m_Enabled: 1
+--- !u!114 &7360913233657904890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8763464808654996196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f32fc055c3d4e44db036353891f1a85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 6577714872501229674}

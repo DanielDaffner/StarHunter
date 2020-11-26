@@ -23,8 +23,8 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         GameObject newPlayer = PhotonNetwork.Instantiate("Character1", new Vector3(13,4,-12), Quaternion.identity);
-        GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>().Follow = newPlayer.transform;
-        GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>().LookAt = newPlayer.transform;
+        GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>().transform.parent = newPlayer.transform;
+        //GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>().LookAt = newPlayer.transform;
     }
 
     // Update is called once per frame

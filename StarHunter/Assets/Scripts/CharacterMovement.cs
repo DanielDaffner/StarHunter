@@ -20,7 +20,7 @@ public class CharacterMovement : MonoBehaviour
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
-
+    public bool is_doublejump_available = true;
     public Transform playerBody;
 
     Vector3 velocity;
@@ -46,21 +46,22 @@ public class CharacterMovement : MonoBehaviour
 
         controller.Move(move * speed * Time.deltaTime );
 
-        transform.Rotate(0, Input.GetAxis("Horizontal") * rotateSpeed, 0);
-        var forward = transform.TransformDirection(Vector3.forward);
-        float curSpeed = speed * Input.GetAxis("Vertical");
-        controller.SimpleMove(forward * curSpeed);
-
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if(isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
+            is_doublejump_available = true;
         }
 
-        if(Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") )
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            if(isGrounded) {
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            } else if (is_doublejump_available) {
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+                is_doublejump_available = false;
+            }        
         }
 
         if (!isGrounded)
