@@ -30,9 +30,12 @@ public class CharacterMovement : MonoBehaviour
 
     PhotonView photonView;
 
+    public Transform gameCamera;
+
     private void Start()
     {
         photonView = GetComponent<PhotonView>();
+        
     }
 
     // Update is called once per frame
@@ -48,6 +51,9 @@ public class CharacterMovement : MonoBehaviour
         controller.Move(move * speed * Time.deltaTime );
 
         transform.Rotate(0, Input.GetAxis("Horizontal") * rotateSpeed, 0);
+
+        //transform.Rotate(GameObject.FindGameObjectWithTag("MainCamera").transform.rotation.eulerAngles);
+      
         var forward = transform.TransformDirection(Vector3.forward);
         float curSpeed = speed * Input.GetAxis("Vertical");
         controller.SimpleMove(forward * curSpeed);
@@ -70,6 +76,9 @@ public class CharacterMovement : MonoBehaviour
             velocity.y += gravity * Time.deltaTime;
            
         }
+
+        
+
         controller.Move(velocity * Time.deltaTime);
 
         if (Input.GetMouseButton(0))
