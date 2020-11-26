@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 8737442002299782082}
   - component: {fileID: 8575266467277286243}
   - component: {fileID: 7832975402820094982}
+  - component: {fileID: 174810107432718148}
   m_Layer: 0
   m_Name: Character1
   m_TagString: Player
@@ -210,6 +211,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 1}
+--- !u!114 &174810107432718148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5122895208204674904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e6cd23602f6b4e46aeae092df1a473a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photonView: {fileID: 6940092768872159654}
+  mRed: {fileID: 2100000, guid: 36d6940a068d5f249a35c22cfb24ee93, type: 2}
+  mGreen: {fileID: 2100000, guid: 7fa0c681d1086f248b2cd0633e0b279c, type: 2}
+  mBlue: {fileID: 2100000, guid: 81972e6e2b80bb048b486ea338478b59, type: 2}
+  mYellow: {fileID: 2100000, guid: fc6788053b7109a4798dc69dda39b50d, type: 2}
 --- !u!1 &6943962195170640137
 GameObject:
   m_ObjectHideFlags: 0

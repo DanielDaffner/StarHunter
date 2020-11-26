@@ -31,7 +31,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     {
         RoomOptions roomOptions = new RoomOptions();
         roomOptions.MaxPlayers = 4;
-        PhotonNetwork.JoinOrCreateRoom("Room 2", roomOptions, null);
+        PhotonNetwork.JoinOrCreateRoom("Show", roomOptions, null);
     }
 
     public override void OnJoinedRoom()
@@ -69,22 +69,22 @@ public class MyPhoton : MonoBehaviourPunCallbacks
             GameObject star = newPlayer.transform.Find("StarGhost").gameObject;
             star.GetComponent<MeshRenderer>().enabled = true;
             print(PhotonNetwork.IsMasterClient);
-            newPlayer.GetComponent<MeshRenderer>().material = mRed;
+            newPlayer.GetComponent<PhotonView>().RPC("setMaterialRed", RpcTarget.AllBuffered);
         }
 
         if (PhotonNetwork.PlayerList.Length == 2)
-        {       
-            newPlayer.GetComponent<MeshRenderer>().material = mGreen;
+        {
+            newPlayer.GetComponent<PhotonView>().RPC("setMaterialGreen", RpcTarget.AllBuffered);
         }
 
         if (PhotonNetwork.PlayerList.Length == 3)
-        {         
-            newPlayer.GetComponent<MeshRenderer>().material = mBlue;
+        {
+            newPlayer.GetComponent<PhotonView>().RPC("setMaterialBlue", RpcTarget.AllBuffered);
         }
 
         if (PhotonNetwork.PlayerList.Length == 4)
-        {    
-            newPlayer.GetComponent<MeshRenderer>().material = mYellow;
+        {
+            newPlayer.GetComponent<PhotonView>().RPC("setMaterialYellow", RpcTarget.AllBuffered);
         }
 
         // if (newPlayer.GetComponent<PhotonView>().ViewID == 1002)
