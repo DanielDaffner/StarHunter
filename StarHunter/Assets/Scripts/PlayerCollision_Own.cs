@@ -27,17 +27,10 @@ public class PlayerCollision_Own : MonoBehaviour
 
     public void hit()
     {
-        print("hit");
-        if (!inRange || !hasStar) return;
-        photonViewStarOther.RPC("switchOff", RpcTarget.All);
-        photonViewStarOwn.RPC("switchOn", RpcTarget.All);
-    }
 
-    public void Update()
-    {
         if (otherTmp == null) return;
         if (otherTmp.isTrigger) return;
-        
+
         photonViewPlayer = GetComponent<PhotonView>();
         photonViewStarOwn = transform.Find("StarGhost").GetComponent<PhotonView>();
         photonViewStarOther = otherTmp.transform.Find("StarGhost").GetComponent<PhotonView>();
@@ -60,7 +53,12 @@ public class PlayerCollision_Own : MonoBehaviour
             print(hasStar);
 
         }
+        print("hit");
+        if (!inRange || !hasStar) return;
+        photonViewStarOther.RPC("switchOff", RpcTarget.All);
+        photonViewStarOwn.RPC("switchOn", RpcTarget.All);
     }
+
 }
 
 

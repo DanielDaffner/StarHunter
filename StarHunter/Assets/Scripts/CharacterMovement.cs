@@ -90,7 +90,7 @@ public class CharacterMovement : MonoBehaviour
         {
             print("try hit");
         }
-        if (Input.GetMouseButton(0) && playerCollision_Own.hasStar)
+        if (Input.GetMouseButton(0))
         {
             playerCollision_Own.hit();
         }
