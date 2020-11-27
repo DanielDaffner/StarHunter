@@ -9,51 +9,57 @@ public class PlayerCollision_Own : MonoBehaviour
     PhotonView photonViewPlayer;
     PhotonView photonViewStarOwn;
     PhotonView photonViewStarOther;
-    public bool ableToHit = false;
+    public bool hasStar = false;
+    private bool inRange = false;
+    Collider otherTmp;
 
   
 
     private void OnTriggerEnter(Collider other)
     {
-
-        if (other.isTrigger) return;
-        transform.GetComponent<CapsuleCollider>().enabled = false;
-        photonViewPlayer = GetComponent<PhotonView>();
-        photonViewStarOwn = transform.Find("StarGhost").GetComponent<PhotonView>();
-
-        photonViewStarOther = other.transform.Find("StarGhost").GetComponent<PhotonView>();
-        if (!photonViewPlayer.IsMine)
-        {
-            print("not mine!");
-            return;
-           
-        }
-
-        print("Collision called from ");
-        print(photonViewPlayer.ViewID);
-        
-        if (other.gameObject.tag == "Player" && other.gameObject !=transform.gameObject)
-        {
-            bool you = other.transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled;
-            ableToHit = true;
-            print("able to hit");
-        }
-
-
-        transform.GetComponent<CapsuleCollider>().enabled = true;
+        otherTmp = other;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        ableToHit = false;
-        print("not able to hit anymore");
+        otherTmp = null;
     }
 
     public void hit()
     {
         print("hit");
+        if (!inRange || !hasStar) return;
         photonViewStarOther.RPC("switchOff", RpcTarget.All);
         photonViewStarOwn.RPC("switchOn", RpcTarget.All);
+    }
+
+    public void Update()
+    {
+        if (otherTmp == null) return;
+        if (otherTmp.isTrigger) return;
+        
+        photonViewPlayer = GetComponent<PhotonView>();
+        photonViewStarOwn = transform.Find("StarGhost").GetComponent<PhotonView>();
+        photonViewStarOther = otherTmp.transform.Find("StarGhost").GetComponent<PhotonView>();
+        if (!photonViewPlayer.IsMine)
+        {
+            print("not mine!");
+            return;
+
+        }
+
+        print("Collision called from ");
+        print(photonViewPlayer.ViewID);
+
+        if (otherTmp.gameObject.tag == "Player" && otherTmp.gameObject != transform.gameObject)
+        {
+            inRange = true;
+            bool you = otherTmp.transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled;
+            hasStar = you;
+            print("able to get star");
+            print(hasStar);
+
+        }
     }
 }
 
