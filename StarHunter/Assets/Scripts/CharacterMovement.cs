@@ -10,7 +10,7 @@ public class CharacterMovement : MonoBehaviour
     public CharacterController controller;
     public PlayerCollision_Own playerCollision_Own;
 
-    public float speed = 15f;
+    public float speed = 20f;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
     public float rotateSpeed = 0.6f;
@@ -42,7 +42,7 @@ public class CharacterMovement : MonoBehaviour
         if (!photonView.IsMine) return;
 
         //test
-        transform.Rotate(0, Input.GetAxisRaw("Rotate") * 120 * Time.deltaTime, 0);
+        transform.Rotate(0, Input.GetAxisRaw("Rotate") * 60 * Time.deltaTime, 0);
 
         //Movement
         float x = Input.GetAxisRaw("Horizontal");
