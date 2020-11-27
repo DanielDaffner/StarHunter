@@ -29,7 +29,7 @@ public class PlayerCollision_Own : MonoBehaviour
     {
 
         if (otherTmp == null) return;
-        if (otherTmp.isTrigger) return;
+       
 
         photonViewPlayer = GetComponent<PhotonView>();
         photonViewStarOwn = transform.Find("StarGhost").GetComponent<PhotonView>();
