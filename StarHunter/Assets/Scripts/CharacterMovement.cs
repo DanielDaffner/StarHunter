@@ -94,6 +94,10 @@ public class CharacterMovement : MonoBehaviour
         {
             playerCollision_Own.hit();
         }
+        else if (Input.GetButton("Fire1"))
+        {
+            playerCollision_Own.hit();
+        }
 
     }
 
