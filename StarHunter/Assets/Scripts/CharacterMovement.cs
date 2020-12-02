@@ -43,7 +43,7 @@ public class CharacterMovement : MonoBehaviour
         if (!photonView.IsMine) return;
 
         //test
-        transform.Rotate(0, Input.GetAxis("Rotate") * 120 * Time.deltaTime, 0);
+        transform.Rotate(0, Input.GetAxis("Rotate") * Time.deltaTime * rotateSpeed, 0);
 
         //Movement
         float x = Input.GetAxis("Horizontal");

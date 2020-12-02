@@ -21,6 +21,7 @@ public class animationStateController : MonoBehaviour
     void Update()
     {
         if (!photonView.IsMine) return;
+
         bool walking = animator.GetBool(walkingHash);
         bool forwardPressed = Input.GetKey("w");
         bool backwardPressed = Input.GetKey("s");
