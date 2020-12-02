@@ -326,6 +326,7 @@ GameObject:
   - component: {fileID: 4148230343574661286}
   - component: {fileID: 6556153850123888169}
   - component: {fileID: 5656955683795309476}
+  - component: {fileID: -4927989174891458879}
   m_Layer: 0
   m_Name: Character1
   m_TagString: Untagged
@@ -388,6 +389,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 6629343055243027790}
+  - {fileID: -4927989174891458879}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -506,6 +508,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 062a25c75b1bf3b4c8a7cb56ef716a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-4927989174891458879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7003177700149974434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 2
+    Name: walking
+  - Type: 4
+    SynchronizeType: 2
+    Name: hitting
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
 --- !u!1 &7902799265650032433
 GameObject:
   m_ObjectHideFlags: 0
