@@ -33,7 +33,7 @@ public class SmoothFollow : MonoBehaviour
             return;
 
         // Calculate the current rotation angles
-        var wantedRotationAngle = target.eulerAngles.y;
+        var wantedRotationAngle = (target.eulerAngles.y + 270.0f);
         var wantedHeight = target.position.y + height;
 
         var currentRotationAngle = transform.eulerAngles.y;
