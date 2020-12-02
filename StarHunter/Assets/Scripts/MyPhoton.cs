@@ -60,8 +60,9 @@ public class MyPhoton : MonoBehaviourPunCallbacks
 
 
         GameObject newPlayer = PhotonNetwork.Instantiate("Character1", spawn, Quaternion.identity);
-        GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>().Follow = newPlayer.transform;
-        GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>().LookAt = newPlayer.transform;
+        // GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>().Follow = newPlayer.transform;
+        // GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>().LookAt = newPlayer.transform;
+        GameObject.Find("Camera").GetComponent<SmoothFollow>().target = newPlayer.transform;
 
 
         if (PhotonNetwork.PlayerList.Length==1)
