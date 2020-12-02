@@ -22,6 +22,7 @@ public class CharacterMovement : MonoBehaviour
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
 
+    
     public Transform playerBody;
 
     Vector3 velocity;
@@ -47,6 +48,8 @@ public class CharacterMovement : MonoBehaviour
         //Movement
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
+
+      
 
         Vector3 move = transform.right * x + transform.forward * z;
 
