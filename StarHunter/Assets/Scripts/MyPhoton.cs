@@ -60,18 +60,16 @@ public class MyPhoton : MonoBehaviourPunCallbacks
 
 
         GameObject newPlayer = PhotonNetwork.Instantiate("Character1", spawn, Quaternion.identity);
-        GameObject.Find("CM vcam1").GetComponent<CinemachineFreeLook>().Follow = newPlayer.transform;
-        GameObject.Find("CM vcam1").GetComponent<CinemachineFreeLook>().LookAt = newPlayer.transform;
-
-       
+        // GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>().Follow = newPlayer.transform;
+        // GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>().LookAt = newPlayer.transform;
+        GameObject.Find("Camera").GetComponent<SmoothFollow>().target = newPlayer.transform;
 
 
         if (PhotonNetwork.PlayerList.Length==1)
         {
-           // GameObject star = newPlayer.transform.Find("StarGhost").gameObject;
-            
+            GameObject star = newPlayer.transform.Find("StarGhost").gameObject;
+            star.GetComponent<MeshRenderer>().enabled = true;
             print(PhotonNetwork.IsMasterClient);
-           newPlayer.transform.Find("StarGhost").GetComponent<PhotonView>().RPC("switchOn", RpcTarget.AllBuffered);
             newPlayer.GetComponent<PhotonView>().RPC("setMaterialRed", RpcTarget.AllBuffered);
         }
 
