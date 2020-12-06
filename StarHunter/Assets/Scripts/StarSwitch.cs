@@ -37,10 +37,10 @@ public class StarSwitch : MonoBehaviour
     }
 
     [PunRPC]
-    void setHit(PhotonView tmp)
+    void setHit(PhotonMessageInfo tmp)
     {
         if (gotHit) return;
-        other = tmp;
+        other = tmp.photonView;
         gotHit = true ;
 
     }
