@@ -18,6 +18,7 @@ public class PlayerCollision_Own : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if(!other.transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled) return ;
+        if (other.isTrigger) return;
         otherTmp = other;
     }
 
@@ -56,8 +57,8 @@ public class PlayerCollision_Own : MonoBehaviour
         }
         print("hit");
         if (!inRange || !hasStar) return;
-        photonViewStarOther.RPC("switchOff", RpcTarget.All);
-        photonViewStarOwn.RPC("switchOn", RpcTarget.All);
+        
+        photonViewStarOther.RPC("setHit", RpcTarget.AllBuffered,photonViewStarOwn.ViewID.ToString());
     }
 
 }

@@ -10,42 +10,56 @@ public class StarSwitch : MonoBehaviour
 
     
     public PhotonView photonView;
+    private bool gotHit;
+    private PhotonView other;
     private float timeOn;
     private float timeOff;
     // Start is called before the first frame update
     void Start()
     {
-       //photonView = GetComponent<PhotonView>();
-      
-       // timeOn = Time.timeSinceLevelLoad;
-       //timeOff = Time.timeSinceLevelLoad;
+   
     }
 
    
     [PunRPC]
     void switchOn()
     {
-
-       // if (Time.timeSinceLevelLoad > timeOn+1  )
-      //  {
             photonView.GetComponent<MeshRenderer>().enabled = true;
-
-            timeOn = Time.timeSinceLevelLoad;
-
-      //  }
-    }
+         }
 
     [PunRPC]
     void switchOff()
     {
-      //  if (Time.timeSinceLevelLoad > timeOn+1)
-       // {
+     
             photonView.GetComponent<MeshRenderer>().enabled = false;
 
-            timeOn = Time.timeSinceLevelLoad;
-
-       // }
+      
     }
 
+    [PunRPC]
+    void setHit(string tmp)
+    {
+        if (gotHit) return;
+   
+    
+
+        print("hitter");
+        print(tmp);
+        other = PhotonView.Find(int.Parse(tmp));
+        gotHit = true ;
+
+    }
+
+    public void Update()
+    {
+        if (!photonView.IsMine) return;
+        if (gotHit && photonView.GetComponent<MeshRenderer>().enabled)
+        {
+            
+            photonView.RPC("switchOff", RpcTarget.AllBuffered);
+            other.RPC("switchOn", RpcTarget.AllBuffered);
+            gotHit = false;
+        }
+    }
 
 }
