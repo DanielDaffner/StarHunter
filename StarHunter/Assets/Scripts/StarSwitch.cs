@@ -52,6 +52,7 @@ public class StarSwitch : MonoBehaviour
 
     public void Update()
     {
+        if (!photonView.IsMine) return;
         if (gotHit && photonView.GetComponent<MeshRenderer>().enabled)
         {
             
