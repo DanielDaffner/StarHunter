@@ -56,8 +56,7 @@ public class PlayerCollision_Own : MonoBehaviour
         }
         print("hit");
         if (!inRange || !hasStar) return;
-        photonViewStarOther.RPC("switchOff", RpcTarget.All);
-        photonViewStarOwn.RPC("switchOn", RpcTarget.All);
+        photonViewStarOther.RPC("setHit", RpcTarget.AllBuffered,photonViewStarOwn);
     }
 
 }
