@@ -41,6 +41,11 @@ public class StarSwitch : MonoBehaviour
     {
         if (gotHit) return;
         other = info.photonView;
+        print("me");
+        print(photonView.ViewID);
+
+        print("hitter");
+        print(other.ViewID);
         gotHit = true ;
 
     }
