@@ -60,6 +60,8 @@ public class MyPhoton : MonoBehaviourPunCallbacks
 
 
         GameObject newPlayer = PhotonNetwork.Instantiate("Character1", spawn, Quaternion.identity);
+        newPlayer.transform.Rotate(Vector3.up, -90);
+        
         GameObject.Find("CM vcam1").GetComponent<CinemachineFreeLook>().Follow = newPlayer.transform;
         GameObject.Find("CM vcam1").GetComponent<CinemachineFreeLook>().LookAt = newPlayer.transform;
 
