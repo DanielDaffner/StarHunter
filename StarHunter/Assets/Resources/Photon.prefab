@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &996200869826478656
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 996200869826478662}
+  - component: {fileID: 996200869826478657}
+  m_Layer: 0
+  m_Name: Photon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &996200869826478662
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996200869826478656}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &996200869826478657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996200869826478656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 292c92a15c49ba54581c4a7abfb96e34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mRed: {fileID: 2100000, guid: 36d6940a068d5f249a35c22cfb24ee93, type: 2}
+  mGreen: {fileID: 2100000, guid: 7fa0c681d1086f248b2cd0633e0b279c, type: 2}
+  mBlue: {fileID: 2100000, guid: 81972e6e2b80bb048b486ea338478b59, type: 2}
+  mYellow: {fileID: 2100000, guid: fc6788053b7109a4798dc69dda39b50d, type: 2}
+  spawn1: {x: 7.5, y: 6.6, z: 12.5}
+  spawn2: {x: 1, y: 6.6, z: -15.5}
+  spawn3: {x: -20, y: 4.8, z: -6.5}
+  spawn4: {x: -17.5, y: 4.8, z: 13.5}
