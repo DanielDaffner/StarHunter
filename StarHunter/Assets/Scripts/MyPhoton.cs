@@ -16,10 +16,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     public Material mYellow;
 
 
-    public Vector3 spawn1 = new Vector3(7.5f, 6.6f, 12.5f);
-    public Vector3 spawn2 = new Vector3(11f, 6.6f, -15.5f);
-    public Vector3 spawn3 = new Vector3(-20f, 4.8f, -6.5f);
-    public Vector3 spawn4 = new Vector3(-17.5f, 4.8f, 13.5f);
+    public Transform[] spawnPositions = new Transform[4];
 
     // Start is called before the first frame update
     void Start()
@@ -45,16 +42,16 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         {
 
             case 1: 
-                spawn = spawn1;
+                spawn = spawnPositions[0].position;
                 break;
             case 2:
-                spawn = spawn2;
+                spawn = spawnPositions[1].position;
                 break;
             case 3:
-                spawn = spawn3;
+                spawn = spawnPositions[2].position;
                 break;
             case 4:
-                spawn = spawn4;
+                spawn = spawnPositions[3].position;
                 break;
         }
 
