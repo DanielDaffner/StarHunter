@@ -4,13 +4,18 @@ using UnityEngine;
 using Cinemachine;
 using Photon.Pun;
 using Photon.Realtime;
-
+using TMPro;
 
 public class MyPhoton : MonoBehaviourPunCallbacks
 {
-    //logic bools
+    //lobbyMenu Player Names Test
 
-    
+    public static TMP_Text player1;
+    public static TMP_Text player2;
+    public static TMP_Text player3;
+    public static TMP_Text player4;
+
+    public TMP_Text[] playersText = { player1, player2, player3, player4 };
 
     //public GameObject star;
     public Material mRed;
@@ -59,7 +64,20 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     {
         // wait for start
         // display information
-        startGame();
+        //startGame();
+
+        GetComponent<PhotonView>().RPC("showNamesinLobby", RpcTarget.AllBuffered);
+
+    }
+
+    [PunRPC]
+
+    public void showNamesinLobby()
+    {
+        for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
+        {
+            playersText[i].SetText(PhotonNetwork.PlayerList[i].ToString());
+        }
     }
 
     public void startGame()

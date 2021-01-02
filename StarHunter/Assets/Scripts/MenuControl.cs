@@ -4,25 +4,31 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.UI;
+using TMPro;
 
 public class MenuControl : MonoBehaviour
 {
     public MyPhoton photon;
-   public void mainMenuPlay()
-    {
-        // old
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        switchToJoinCreateLobbyMenu();
-        //
-    }
+
+    public GameObject mainMenu;
+    public GameObject joinCreateLobby;
+    public GameObject LobbyMain;
+    public GameObject LobbyClient;
+
+    public Text cLobbyName;
 
     public void mainMenuQuit()
     {
         Application.Quit();
     }
 
-    public void switchToJoinCreateLobbyMenu()
+    public void createJoinLobby()
     {
-      
+        print(cLobbyName.text.ToString());
+        photon.createLobby(cLobbyName.text.ToString());
+        joinCreateLobby.SetActive(false);
+        LobbyMain.SetActive(true);
+       
     }
 }
