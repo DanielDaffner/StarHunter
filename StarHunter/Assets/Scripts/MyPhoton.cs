@@ -108,8 +108,6 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         GameObject.Find("CM vcam1").GetComponent<CinemachineFreeLook>().LookAt = newPlayer.transform;
 
 
-
-
         if (PhotonNetwork.PlayerList.Length == 1)
         {
    
