@@ -5,6 +5,7 @@ using Cinemachine;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
+using UnityEngine.UI;
 
 public class MyPhoton : MonoBehaviourPunCallbacks
 {
@@ -14,6 +15,18 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     public static TMP_Text player2;
     public static TMP_Text player3;
     public static TMP_Text player4;
+
+    public InputField lobbyname;
+
+    public GameObject game;
+    public GameObject menu;
+    public GameObject mainMenu;
+    public GameObject JoinCreateLobby;
+    public GameObject lobbyMain;
+
+    public GameObject startButton;
+
+    private int playerNumber;
 
     public TMP_Text[] playersText = { player1, player2, player3, player4 };
 
@@ -30,23 +43,25 @@ public class MyPhoton : MonoBehaviourPunCallbacks
   void Start()
     {
         //connect to master server
+        Cursor.lockState = CursorLockMode.Confined;
         PhotonNetwork.ConnectUsingSettings();
 
     }
 
     public override void OnConnectedToMaster()
     {
-        // check for lobbys
+        // now connected to main server
 
     
      
     }
 
-    public void createLobby(string name)
+    public void createPrivateLobby()
     {
         RoomOptions roomOptions = new RoomOptions();
         roomOptions.MaxPlayers = 4;
-        PhotonNetwork.JoinOrCreateRoom(name, roomOptions, null);
+
+        PhotonNetwork.JoinOrCreateRoom(lobbyname.text, roomOptions, null);
         // TODO :: switch menu to lobby
 
     }
@@ -65,7 +80,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         // wait for start
         // display information
         //startGame();
-
+        playerNumber = PhotonNetwork.PlayerList.Length;
         GetComponent<PhotonView>().RPC("showNamesinLobby", RpcTarget.AllBuffered);
 
     }
@@ -80,8 +95,25 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         }
     }
 
+    
     public void startGame()
     {
+        GetComponent<PhotonView>().RPC("gameOn", RpcTarget.AllBuffered);
+    }
+
+    //ausgelagert für rpc
+
+
+    [PunRPC]
+    public void gameOn()
+    {   //
+
+        menu.SetActive(false);
+        game.SetActive(true);
+        
+      
+
+        //
         Vector3 spawn = new Vector3();
         switch (Random.Range(1, 4))
         {
@@ -108,34 +140,48 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         GameObject.Find("CM vcam1").GetComponent<CinemachineFreeLook>().LookAt = newPlayer.transform;
 
 
-        if (PhotonNetwork.PlayerList.Length == 1)
+        if (playerNumber == 1)
         {
-   
+
 
             print(PhotonNetwork.IsMasterClient);
             newPlayer.transform.Find("StarGhost").GetComponent<PhotonView>().RPC("switchOn", RpcTarget.AllBuffered);
             newPlayer.GetComponent<PhotonView>().RPC("setMaterialRed", RpcTarget.AllBuffered);
         }
 
-        if (PhotonNetwork.PlayerList.Length == 2)
+        if (playerNumber == 2)
         {
             newPlayer.GetComponent<PhotonView>().RPC("setMaterialGreen", RpcTarget.AllBuffered);
         }
 
-        if (PhotonNetwork.PlayerList.Length == 3)
+        if (playerNumber == 3)
         {
             newPlayer.GetComponent<PhotonView>().RPC("setMaterialBlue", RpcTarget.AllBuffered);
         }
 
-        if (PhotonNetwork.PlayerList.Length == 4)
+        if (playerNumber == 4)
         {
             newPlayer.GetComponent<PhotonView>().RPC("setMaterialYellow", RpcTarget.AllBuffered);
         }
     }
 
+
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
+            PhotonNetwork.LeaveRoom();
+            PhotonNetwork.LoadLevel(0);
+            mainMenu.SetActive(true);
+            JoinCreateLobby.SetActive(false);
+            lobbyMain.SetActive(true);
+            game.SetActive(false);
+            menu.SetActive(true);
+            Cursor.lockState = CursorLockMode.Confined;
+
+
+        }
     }
 }

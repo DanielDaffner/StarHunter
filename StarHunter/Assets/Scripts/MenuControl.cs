@@ -23,12 +23,5 @@ public class MenuControl : MonoBehaviour
         Application.Quit();
     }
 
-    public void createJoinLobby()
-    {
-        print(cLobbyName.text.ToString());
-        photon.createLobby(cLobbyName.text.ToString());
-        joinCreateLobby.SetActive(false);
-        LobbyMain.SetActive(true);
-       
-    }
+  
 }
