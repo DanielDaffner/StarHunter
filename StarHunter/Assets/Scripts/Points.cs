@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class Red : MonoBehaviour
+public class Points : MonoBehaviour
 {
     public static double scoreRed = 0;
     public static int scoreGreen = 0;
@@ -19,6 +19,8 @@ public class Red : MonoBehaviour
     Text scoreY;
 
 
+    bool keepIncrementing = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,7 @@ public class Red : MonoBehaviour
         scoreB = GameObject.Find("Text3").GetComponent<Text>();
         scoreY = GameObject.Find("Text4").GetComponent<Text>();
 
+        StartCoroutine(IncrementEachSecond()); //pts
     }
 
     // Update is called once per frame
@@ -66,4 +69,18 @@ public class Red : MonoBehaviour
         }
 
     }
+
+
+    IEnumerator IncrementEachSecond()
+    {
+        keepIncrementing = true;
+        while (keepIncrementing)
+        {
+            
+                Points.scoreRed++;
+                yield return new WaitForSeconds(1);
+            
+        }
+       
+     }
 }

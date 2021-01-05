@@ -15,11 +15,11 @@ public class PlayerCollision_Own : MonoBehaviour
     Collider otherTmp;
 
 
-    bool keepIncrementing = false;  //pts
+    //bool keepIncrementing = false;  //pts
 
     void Start()
     {
-        StartCoroutine(IncementEachSecond()); //pts
+        //StartCoroutine(IncementEachSecond()); //pts
 
     }
 
@@ -68,7 +68,7 @@ public class PlayerCollision_Own : MonoBehaviour
 
         photonViewStarOther.RPC("setHit", RpcTarget.AllBuffered, photonViewStarOwn.ViewID.ToString());
     }
-        // pts
+        /* pts
    
         IEnumerator IncementEachSecond()
         {
@@ -77,18 +77,18 @@ public class PlayerCollision_Own : MonoBehaviour
              {
                 //if (PhotonNetwork.PlayerList.Length == 1)
                  {
-                    Red.scoreRed++;
+                    Points.scoreRed++;
                     yield return new WaitForSeconds(1);
                  }
-                /*else if (PhotonNetwork.PlayerList.Length == 2)
+                else if (PhotonNetwork.PlayerList.Length == 2)
                 {
                     Red.scoreRed += 0.5;
                     
                     yield return new WaitForSeconds(1);
-                }*/
+                }
 
-             }
-        }
+             }*/
+        //}
 
         
         
