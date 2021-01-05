@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
 
 public class PlayerCollision_Own : MonoBehaviour
 {
@@ -13,11 +14,18 @@ public class PlayerCollision_Own : MonoBehaviour
     private bool inRange = false;
     Collider otherTmp;
 
-  
+
+    bool keepIncrementing = false;  //pts
+
+    void Start()
+    {
+        StartCoroutine(IncementEachSecond()); //pts
+
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(!other.transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled) return ;
+        if (!other.transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled) return;
         if (other.isTrigger) return;
         otherTmp = other;
     }
@@ -31,7 +39,7 @@ public class PlayerCollision_Own : MonoBehaviour
     {
 
         if (otherTmp == null) return;
-       
+
 
         photonViewPlayer = GetComponent<PhotonView>();
         photonViewStarOwn = transform.Find("StarGhost").GetComponent<PhotonView>();
@@ -57,9 +65,34 @@ public class PlayerCollision_Own : MonoBehaviour
         }
         print("hit");
         if (!inRange || !hasStar) return;
-        
-        photonViewStarOther.RPC("setHit", RpcTarget.AllBuffered,photonViewStarOwn.ViewID.ToString());
+
+        photonViewStarOther.RPC("setHit", RpcTarget.AllBuffered, photonViewStarOwn.ViewID.ToString());
     }
+        // pts
+   
+        IEnumerator IncementEachSecond()
+        {
+            keepIncrementing = true;
+            while (keepIncrementing)
+             {
+                //if (PhotonNetwork.PlayerList.Length == 1)
+                 {
+                    Red.scoreRed++;
+                    yield return new WaitForSeconds(1);
+                 }
+                /*else if (PhotonNetwork.PlayerList.Length == 2)
+                {
+                    Red.scoreRed += 0.5;
+                    
+                    yield return new WaitForSeconds(1);
+                }*/
+
+             }
+        }
+
+        
+        
+
 
 }
 

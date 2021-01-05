@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.UI;
 
 public class PlayerColor : MonoBehaviour
 {
@@ -10,10 +11,13 @@ public class PlayerColor : MonoBehaviour
     public Material mGreen;
     public Material mBlue;
     public Material mYellow;
+
+  
+
     void Start()
     {
-     
 
+      
     
     }
 
@@ -22,6 +26,7 @@ public class PlayerColor : MonoBehaviour
     void setMaterialRed()
     {
         photonView.GetComponentInChildren<SkinnedMeshRenderer>().material = mRed;
+
     }
     [PunRPC]
     void setMaterialGreen()

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Cinemachine;
 using Photon.Pun;
 using Photon.Realtime;
@@ -15,6 +16,12 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     public Material mBlue;
     public Material mYellow;
 
+    //score system
+   // public static int scoreRed = 0;
+   // GameObject scoreboard;
+
+
+
 
     public Transform[] spawnPositions = new Transform[4];
 
@@ -22,6 +29,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     void Start()
     {
         PhotonNetwork.ConnectUsingSettings();
+        //scoreboard = GameObject.Find("Canvas").transform.Find("Score").gameObject;
     }
 
     public override void OnConnectedToMaster()
@@ -108,6 +116,8 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        
+
+       
+            
     }
 }
