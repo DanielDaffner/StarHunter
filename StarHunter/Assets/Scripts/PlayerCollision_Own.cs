@@ -19,7 +19,7 @@ public class PlayerCollision_Own : MonoBehaviour
 
     void Start()
     {
-        //StartCoroutine(IncementEachSecond()); //pts
+        //
 
     }
 
