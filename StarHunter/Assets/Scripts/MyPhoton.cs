@@ -27,7 +27,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     public GameObject startButton;
 
     private int playerNumber;
-
+    public GameObject item;
     public TMP_Text[] playersText = { player1, player2, player3, player4 };
 
     //public GameObject star;
@@ -110,8 +110,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
 
         menu.SetActive(false);
         game.SetActive(true);
-        
-      
+
 
         //
         Vector3 spawn = new Vector3();
@@ -169,6 +168,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);

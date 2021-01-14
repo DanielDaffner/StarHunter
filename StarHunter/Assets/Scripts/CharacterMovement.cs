@@ -21,14 +21,17 @@ public class CharacterMovement : MonoBehaviour
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
-
+    
     public Transform playerBody;
-
     Vector3 velocity;
 
     bool isGrounded;
-
+    bool canAirJump = true;
     PhotonView photonView;
+
+    public bool hasItem = false;
+    public int itemType = 0;
+    public float bonusMsTime = 0;
 
     private void Start()
     {
@@ -37,8 +40,7 @@ public class CharacterMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         if (!photonView.IsMine) return;
 
         //test
@@ -49,8 +51,12 @@ public class CharacterMovement : MonoBehaviour
         float z = Input.GetAxisRaw("Vertical");
 
         Vector3 move = transform.right * x + transform.forward * z;
-
-        controller.Move(move.normalized * speed * Time.deltaTime );
+        if (bonusMsTime > 0) {
+            controller.Move(move.normalized * speed * Time.deltaTime * 2f);
+            bonusMsTime -= Time.deltaTime;
+        } else { 
+            controller.Move(move.normalized * speed * Time.deltaTime);
+        }
 
         //Rotation
 
@@ -70,9 +76,10 @@ public class CharacterMovement : MonoBehaviour
             velocity.y = -2f;
         }
 
-        if(Input.GetButtonDown("Jump")&&isGrounded)
+        if(Input.GetButtonDown("Jump")&&(isGrounded || canAirJump))
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            canAirJump = false;
         }
 
         if (!isGrounded)
@@ -80,19 +87,27 @@ public class CharacterMovement : MonoBehaviour
            // print("Mid Air!");
             velocity.y += gravity * Time.deltaTime;
            
+        } else {
+            canAirJump = true;
         }
         controller.Move(velocity * Time.deltaTime);
-
-
 
         //Hit
         if (Input.GetMouseButton(0))
         {
             print("try hit");
-        }
-        if (Input.GetMouseButton(0))
-        {
             playerCollision_Own.hit();
+        }
+        if (Input.GetMouseButton(1)) {
+            if (hasItem) {
+                if (itemType == 0) {
+                    bonusMsTime = 1.5f;
+                }
+                if (itemType == 1) {
+                    velocity.y += Mathf.Sqrt(jumpHeight * 4 * -2f * gravity);
+                }
+                hasItem = false;
+            }
         }
         else if (Input.GetButton("Fire1"))
         {
