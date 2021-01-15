@@ -153,7 +153,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         Vector3 spawn = new Vector3();
 
         print("playernumber at gamestart" + playerNumber);
-        switch (playerNumber)
+        switch (PhotonNetwork.LocalPlayer.ActorNumber % 4 +1)
         {
 
             case 1:
@@ -249,13 +249,13 @@ public class MyPhoton : MonoBehaviourPunCallbacks
 {
         PhotonNetwork.Disconnect();
         mainMenu.SetActive(true);
-    JoinCreateLobby.SetActive(false);
-    lobbyMainButton.SetActive(false);
-    lobbyMain.SetActive(false);
+        JoinCreateLobby.SetActive(false);
+        lobbyMainButton.SetActive(false);
         startButton.SetActive(false);
-    game.SetActive(false);
-    menu.SetActive(true);
-    Cursor.lockState = CursorLockMode.Confined;
+        lobbyMain.SetActive(false);
+        game.SetActive(false);
+        menu.SetActive(true);
+        Cursor.lockState = CursorLockMode.Confined;
 }
 
     public void mainMenuQuit()
