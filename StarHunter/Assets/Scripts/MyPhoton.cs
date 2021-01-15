@@ -264,7 +264,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     }
     public void lobbyQuit()
     {
-        GetComponent<PhotonView>().RPC("decreasePlayerNumber", RpcTarget.All);
+        GetComponent<PhotonView>().RPC("decreasePlayerNumber", RpcTarget.AllViaServer);
     }
 
 }
