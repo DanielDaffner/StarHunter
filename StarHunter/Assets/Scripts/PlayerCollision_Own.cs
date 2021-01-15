@@ -17,7 +17,8 @@ public class PlayerCollision_Own : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(!other.transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled) return ;
+        if (!other.transform.Find("StarGhost")) return;
+        if (!other.transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled) return ;
         if (other.isTrigger) return;
         otherTmp = other;
     }
