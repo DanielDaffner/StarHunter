@@ -150,6 +150,8 @@ public class MyPhoton : MonoBehaviourPunCallbacks
 
         //
         Vector3 spawn = new Vector3();
+
+        print("playernumber at gamestart" + playerNumber);
         switch (playerNumber)
         {
 
@@ -221,7 +223,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
                 //     return;
                 //   }
                 //  else
-                GetComponent<PhotonView>().RPC("decreasePlayerNumber", RpcTarget.All);
+                GetComponent<PhotonView>().RPC("decreasePlayerNumber", RpcTarget.AllViaServer);
                 exit_gracefully();
             }
 
@@ -249,6 +251,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     JoinCreateLobby.SetActive(false);
     lobbyMainButton.SetActive(false);
     lobbyMain.SetActive(false);
+        startButton.SetActive(false);
     game.SetActive(false);
     menu.SetActive(true);
     Cursor.lockState = CursorLockMode.Confined;
