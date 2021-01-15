@@ -26,7 +26,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     public GameObject lobbyMainButton;
     public GameObject startButton;
 
-    private int playerNumber;
+    public int playerNumber;
     private bool connected;
 
 
@@ -117,6 +117,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     [PunRPC]
     public void decreasePlayerNumber()
     {
+        print("PeterZWegatsEier");
         playerNumber--;
         print(playerNumber);
     }
@@ -176,8 +177,8 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         GameObject.Find("CM vcam1").GetComponent<CinemachineFreeLook>().Follow = newPlayer.transform;
         GameObject.Find("CM vcam1").GetComponent<CinemachineFreeLook>().LookAt = newPlayer.transform;
 
-
-        if (playerNumber == 1)
+        print("Actor Number" +PhotonNetwork.LocalPlayer.ActorNumber);
+        if (PhotonNetwork.LocalPlayer.ActorNumber%3+1 == 1)
         {
 
 
@@ -187,17 +188,17 @@ public class MyPhoton : MonoBehaviourPunCallbacks
             newPlayer.GetComponent<PhotonView>().RPC("setMaterialRed", RpcTarget.AllBuffered);
         }
 
-        if (playerNumber == 2)
+        if (PhotonNetwork.LocalPlayer.ActorNumber % 3+1 == 2)
         {
             newPlayer.GetComponent<PhotonView>().RPC("setMaterialGreen", RpcTarget.AllBuffered);
         }
 
-        if (playerNumber == 3)
+        if (PhotonNetwork.LocalPlayer.ActorNumber % 3+1 == 3)
         {
             newPlayer.GetComponent<PhotonView>().RPC("setMaterialBlue", RpcTarget.AllBuffered);
         }
 
-        if (playerNumber == 4)
+        if (PhotonNetwork.LocalPlayer.ActorNumber % 3 +1== 4)
         {
             newPlayer.GetComponent<PhotonView>().RPC("setMaterialYellow", RpcTarget.AllBuffered);
         }
@@ -209,7 +210,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     void Update()
     {
 
-        print("isMaster"+ PhotonNetwork.IsMasterClient);
+        print(playerNumber);
         if (PhotonNetwork.IsMasterClient)
             startButton.SetActive(true);
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -264,6 +265,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     }
     public void lobbyQuit()
     {
+        print("PeterZwegatsEier2");
         GetComponent<PhotonView>().RPC("decreasePlayerNumber", RpcTarget.AllViaServer);
     }
 
