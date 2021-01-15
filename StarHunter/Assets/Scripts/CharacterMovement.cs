@@ -103,11 +103,20 @@ public class CharacterMovement : MonoBehaviour {
                     velocity.y += Mathf.Sqrt(jumpHeight * 4 * -2f * gravity);
                 }
                 hasItem = false;
+                photonView.RPC("unsetHasItem", RpcTarget.AllBuffered, photonView.ViewID.ToString());
             }
         }
         else if (Input.GetButton("Fire1")) {
             playerCollision_Own.hit();
         }
+
+
+    }
+    [PunRPC]
+    void unsetHasItem(string tmp) {
+        
+        //other = PhotonView.Find(int.Parse(tmp));
+        hasItem = false;
 
     }
 

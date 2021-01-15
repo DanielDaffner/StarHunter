@@ -16,6 +16,7 @@ public class MangeItem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if( !child.activeInHierarchy) {
             if (respawnTimer <= 0) {
                 respawnTimer = 2f;

@@ -309,6 +309,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   playerBody: {fileID: 222578991902489995}
+  hasItem: 0
+  itemType: 0
+  bonusMsTime: 0
 --- !u!65 &5170216818611237202
 BoxCollider:
   m_ObjectHideFlags: 0
