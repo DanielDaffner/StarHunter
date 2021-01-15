@@ -23,10 +23,12 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     public GameObject mainMenu;
     public GameObject JoinCreateLobby;
     public GameObject lobbyMain;
-
+    public GameObject lobbyMainButton;
     public GameObject startButton;
 
     private int playerNumber;
+    private bool connected;
+
 
     public TMP_Text[] playersText = { player1, player2, player3, player4 };
 
@@ -44,17 +46,25 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     {
         //connect to master server
         Cursor.lockState = CursorLockMode.Confined;
-        PhotonNetwork.ConnectUsingSettings();
+       
 
     }
+
+   public void connectToMaster() { 
+
+     PhotonNetwork.ConnectUsingSettings();
+
+    }
+    
 
     public override void OnConnectedToMaster()
     {
         // now connected to main server
 
-    
-     
-    }
+      mainMenu.SetActive(false);
+    JoinCreateLobby.SetActive(true);
+
+}
 
     public void createPrivateLobby()
     {
@@ -65,6 +75,8 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         // TODO :: switch menu to lobby
 
     }
+
+    
 
     public void createLobby()
     {
@@ -80,9 +92,16 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         // wait for start
         // display information
         //startGame();
+        connected = true;
         playerNumber = PhotonNetwork.PlayerList.Length;
-        GetComponent<PhotonView>().RPC("showNamesinLobby", RpcTarget.AllBuffered);
+        GetComponent<PhotonView>().RPC("showNamesinLobby", RpcTarget.All);
+        lobbyMainButton.SetActive(true);
+    }
 
+    public override void OnJoinRoomFailed(short returnCode, string message)
+    {
+     base.OnJoinRoomFailed(returnCode, message);
+        returnToStartMenu();    
     }
 
     [PunRPC]
@@ -95,14 +114,32 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         }
     }
 
-    
+    [PunRPC]
+    public void decreasePlayerNumber()
+    {
+        playerNumber--;
+        print(playerNumber);
+    }
+
+    [PunRPC]
+    public void hostLeft()
+    {
+        exit_gracefully();
+        returnToStartMenu();
+    }
+
+
+
     public void startGame()
     {
+
+
         GetComponent<PhotonView>().RPC("gameOn", RpcTarget.AllBuffered);
     }
 
     //ausgelagert für rpc
-
+    
+ 
 
     [PunRPC]
     public void gameOn()
@@ -110,12 +147,10 @@ public class MyPhoton : MonoBehaviourPunCallbacks
 
         menu.SetActive(false);
         game.SetActive(true);
-        
-      
 
         //
         Vector3 spawn = new Vector3();
-        switch (Random.Range(1, 4))
+        switch (playerNumber)
         {
 
             case 1:
@@ -145,6 +180,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
 
 
             print(PhotonNetwork.IsMasterClient);
+            
             newPlayer.transform.Find("StarGhost").GetComponent<PhotonView>().RPC("switchOn", RpcTarget.AllBuffered);
             newPlayer.GetComponent<PhotonView>().RPC("setMaterialRed", RpcTarget.AllBuffered);
         }
@@ -165,23 +201,60 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         }
     }
 
+  
 
     // Update is called once per frame
     void Update()
     {
+
+        print("isMaster"+ PhotonNetwork.IsMasterClient);
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
-            PhotonNetwork.LeaveRoom();
-            PhotonNetwork.LoadLevel(0);
-            mainMenu.SetActive(true);
-            JoinCreateLobby.SetActive(false);
-            lobbyMain.SetActive(true);
-            game.SetActive(false);
-            menu.SetActive(true);
-            Cursor.lockState = CursorLockMode.Confined;
+            if (!JoinCreateLobby.activeSelf&&!mainMenu.activeSelf) {
+                print("testoe");
+                if (PhotonNetwork.IsMasterClient) {
+                    print("testmain");
+                    GetComponent<PhotonView>().RPC("hostLeft", RpcTarget.AllViaServer);
+                    return;
+                }
+                else
+                GetComponent<PhotonView>().RPC("decreasePlayerNumber", RpcTarget.All);
+                exit_gracefully();
+            }
 
-
+            returnToStartMenu();
+            
         }
+
     }
+
+    public void exit_gracefully()
+    {
+        connected = false;
+        PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
+       // PhotonNetwork.LeaveRoom();
+      //  PhotonNetwork.LoadLevel(0);
+        PhotonNetwork.Disconnect();
+    
+}
+
+ 
+    public void returnToStartMenu()
+{
+        PhotonNetwork.Disconnect();
+        mainMenu.SetActive(true);
+    JoinCreateLobby.SetActive(false);
+    lobbyMainButton.SetActive(false);
+    lobbyMain.SetActive(false);
+    game.SetActive(false);
+    menu.SetActive(true);
+    Cursor.lockState = CursorLockMode.Confined;
+}
+
+    public void mainMenuQuit()
+    {
+        Application.Quit();
+       
+    }
+
 }
