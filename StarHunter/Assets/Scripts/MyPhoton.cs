@@ -208,16 +208,19 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     {
 
         print("isMaster"+ PhotonNetwork.IsMasterClient);
+        if (PhotonNetwork.IsMasterClient)
+            startButton.SetActive(true);
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!JoinCreateLobby.activeSelf&&!mainMenu.activeSelf) {
-                print("testoe");
-                if (PhotonNetwork.IsMasterClient) {
-                    print("testmain");
-                    GetComponent<PhotonView>().RPC("hostLeft", RpcTarget.AllViaServer);
-                    return;
-                }
-                else
+
+                // if (PhotonNetwork.IsMasterClient) {
+
+                //      print("leave when with master");
+                //    GetComponent<PhotonView>().RPC("hostLeft", RpcTarget.AllViaServer);
+                //     return;
+                //   }
+                //  else
                 GetComponent<PhotonView>().RPC("decreasePlayerNumber", RpcTarget.All);
                 exit_gracefully();
             }
@@ -255,6 +258,10 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     {
         Application.Quit();
        
+    }
+    public void lobbyQuit()
+    {
+        GetComponent<PhotonView>().RPC("decreasePlayerNumber", RpcTarget.All);
     }
 
 }
