@@ -178,7 +178,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         GameObject.Find("CM vcam1").GetComponent<CinemachineFreeLook>().LookAt = newPlayer.transform;
 
         print("Actor Number" +PhotonNetwork.LocalPlayer.ActorNumber);
-        if (PhotonNetwork.LocalPlayer.ActorNumber%3+1 == 1)
+        if (PhotonNetwork.IsMasterClient)
         {
 
 
@@ -188,17 +188,17 @@ public class MyPhoton : MonoBehaviourPunCallbacks
             newPlayer.GetComponent<PhotonView>().RPC("setMaterialRed", RpcTarget.AllBuffered);
         }
 
-        if (PhotonNetwork.LocalPlayer.ActorNumber % 3+1 == 2)
+       else if (PhotonNetwork.LocalPlayer.ActorNumber % 3 == 0)
         {
             newPlayer.GetComponent<PhotonView>().RPC("setMaterialGreen", RpcTarget.AllBuffered);
         }
 
-        if (PhotonNetwork.LocalPlayer.ActorNumber % 3+1 == 3)
+       else if (PhotonNetwork.LocalPlayer.ActorNumber % 3 == 1)
         {
             newPlayer.GetComponent<PhotonView>().RPC("setMaterialBlue", RpcTarget.AllBuffered);
         }
 
-        if (PhotonNetwork.LocalPlayer.ActorNumber % 3 +1== 4)
+        else if (PhotonNetwork.LocalPlayer.ActorNumber % 3 == 2)
         {
             newPlayer.GetComponent<PhotonView>().RPC("setMaterialYellow", RpcTarget.AllBuffered);
         }
@@ -224,7 +224,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
                 //     return;
                 //   }
                 //  else
-                GetComponent<PhotonView>().RPC("decreasePlayerNumber", RpcTarget.AllViaServer);
+                //GetComponent<PhotonView>().RPC("decreasePlayerNumber", RpcTarget.AllViaServer);
                 exit_gracefully();
             }
 
@@ -263,10 +263,6 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         Application.Quit();
        
     }
-    public void lobbyQuit()
-    {
-        print("PeterZwegatsEier2");
-        GetComponent<PhotonView>().RPC("decreasePlayerNumber", RpcTarget.AllViaServer);
-    }
+  
 
 }
