@@ -28,7 +28,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
 
     public int playerNumber;
     private bool connected;
-
+     
 
     public TMP_Text[] playersText = { player1, player2, player3, player4 };
 
