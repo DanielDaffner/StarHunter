@@ -116,6 +116,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         {
             playersText[i].SetText("Empty");
         }
+        print("PlayerList Length for fields " + PhotonNetwork.PlayerList.Length);
     }
 
     [PunRPC]
@@ -268,7 +269,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
        //     {
        //         print("peter" + time);
        //         time -= Time.deltaTime;
-      //      }
+      //       }
         
         PhotonNetwork.Disconnect();
         mainMenu.SetActive(true);
