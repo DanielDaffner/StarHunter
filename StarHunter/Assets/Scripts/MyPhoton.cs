@@ -109,7 +109,11 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     {
         for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
         {
-            playersText[i].SetText(PhotonNetwork.PlayerList[i].ToString());
+            playersText[i].SetText("Player"+(i+1));
+        }
+        for (int i = 3; i > PhotonNetwork.PlayerList.Length-1; i--)
+        {
+            playersText[i].SetText("Empty");
         }
     }
 
