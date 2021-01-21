@@ -41,10 +41,6 @@ public class StarSwitch : MonoBehaviour
     {
         if (gotHit) return;
    
-    
-
-        print("hitter");
-        print(tmp);
         other = PhotonView.Find(int.Parse(tmp));
         gotHit = true ;
 

@@ -118,7 +118,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     {
         if(playerNumber>PhotonNetwork.PlayerList.Length)
         playerNumber--;
-        print(playerNumber);
+        print("playerNumber after decrease" +playerNumber);
     }
 
     [PunRPC]
@@ -152,7 +152,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         Vector3 spawn = new Vector3();
 
         print("playernumber at gamestart" + playerNumber);
-        switch (PhotonNetwork.LocalPlayer.ActorNumber % 4 +1)
+        switch (playerNumber)
         {
 
             case 1:
@@ -176,7 +176,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         GameObject.Find("CM vcam1").GetComponent<CinemachineFreeLook>().Follow = newPlayer.transform;
         GameObject.Find("CM vcam1").GetComponent<CinemachineFreeLook>().LookAt = newPlayer.transform;
 
-        print("Actor Number" +PhotonNetwork.LocalPlayer.ActorNumber);
+        //print("Actor Number" +PhotonNetwork.LocalPlayer.ActorNumber);
         if (playerNumber==1)
         {
 
@@ -252,18 +252,21 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     [PunRPC]
     public void addScore(int number)
     {
+        print("Score soll hochzählen bei " + number);
         switch (number) {
             case 1:
                 Points.score1++;
                 break;
             case 2:
-                Points.score1++;
+                Points.score2++;
                 break;
             case 3:
-                Points.score1++;
+                Points.score3++;
                 break;
             case 4:
-                Points.score1++;
+                Points.score4++;
+                break;
+            default:
                 break;
         }
 
