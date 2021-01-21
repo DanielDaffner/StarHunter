@@ -52,6 +52,9 @@ public class StarSwitch : MonoBehaviour
 
     public void Update()
     {
+        Transform particleSystem = gameObject.transform.GetChild(0);
+        particleSystem.gameObject.active = photonView.GetComponent<MeshRenderer>().enabled;
+
         if (!photonView.IsMine) return;
         if (gotHit && photonView.GetComponent<MeshRenderer>().enabled)
         {
