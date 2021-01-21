@@ -256,7 +256,8 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     }
 
     public void returnToStartMenu()
-{
+{ 
+        
         if (lobbyMain.activeSelf)
         {
             GetComponent<PhotonView>().RPC("decreasePlayerNumber", RpcTarget.All);
