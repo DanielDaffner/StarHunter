@@ -125,6 +125,12 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         if(playerNumber>PhotonNetwork.PlayerList.Length)
         playerNumber--;
         print("playerNumber after decrease" +playerNumber);
+            float time = 0.5f;
+            while (time > 0)
+             {
+                 //print("peter" + time);
+                 time -= Time.deltaTime;
+               }
     }
 
     [PunRPC]
@@ -213,8 +219,8 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-
-        print(playerNumber);
+        print("playlistlength" + PhotonNetwork.PlayerList.Length);
+        //print(playerNumber);
         if (PhotonNetwork.IsMasterClient)
         {
             startButton.SetActive(true);
