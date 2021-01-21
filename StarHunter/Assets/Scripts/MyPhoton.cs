@@ -221,7 +221,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        if (lobbyMain.activeSelf)
+        if (lobbyMain.activeSelf&&connected)
         {
             showNamesinLobby();
        
