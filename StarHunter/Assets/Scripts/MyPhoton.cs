@@ -245,6 +245,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
 
     public void exit_gracefully()
     {
+        if (lobbyMain.activeSelf) { GetComponent<PhotonView>().RPC("showNamesinLobby", RpcTarget.All); }
         connected = false;
         PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
        // PhotonNetwork.LeaveRoom();
@@ -278,6 +279,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
 
     public void returnToStartMenu()
 {
+        if (lobbyMain.activeSelf) { GetComponent<PhotonView>().RPC("showNamesinLobby", RpcTarget.All); }
         PhotonNetwork.Disconnect();
         mainMenu.SetActive(true);
         JoinCreateLobby.SetActive(false);
