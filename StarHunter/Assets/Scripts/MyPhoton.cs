@@ -265,13 +265,13 @@ public class MyPhoton : MonoBehaviourPunCallbacks
             PhotonNetwork.SendAllOutgoingCommands();
         }
 
-       //     float time = 10.5f;
+        //     float time = 10.5f;
         //    while (time > 0)
-       //     {
-       //         print("peter" + time);
-       //         time -= Time.deltaTime;
-      //       }
-        
+        //     {
+        //         print("peter" + time);
+        //         time -= Time.deltaTime;
+        //       }
+        PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
         PhotonNetwork.Disconnect();
         mainMenu.SetActive(true);
         JoinCreateLobby.SetActive(false);
