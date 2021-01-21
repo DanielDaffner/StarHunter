@@ -268,8 +268,8 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         {
             GetComponent<PhotonView>().RPC("decreasePlayerNumber", RpcTarget.All);
             PhotonNetwork.SendAllOutgoingCommands();
-            GetComponent<PhotonView>().RPC("showNamesinLobby", RpcTarget.All);
-            PhotonNetwork.SendAllOutgoingCommands();
+            //GetComponent<PhotonView>().RPC("showNamesinLobby", RpcTarget.All);
+            //PhotonNetwork.SendAllOutgoingCommands();
         }
 
         //     float time = 10.5f;
