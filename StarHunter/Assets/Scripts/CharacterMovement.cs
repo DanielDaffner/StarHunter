@@ -72,6 +72,7 @@ public class CharacterMovement : MonoBehaviour
 
         if(Input.GetButtonDown("Jump")&&isGrounded)
         {
+            SoundManagerScript.PlaySound("jump");
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 

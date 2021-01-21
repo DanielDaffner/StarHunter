@@ -13,6 +13,7 @@ public class PlayerCollision_Own : MonoBehaviour
     public bool hasStar = false;
     private bool inRange = false;
     Collider otherTmp;
+    public string starSteal = "able to get star";
 
 
     //bool keepIncrementing = false;  //pts
@@ -59,7 +60,7 @@ public class PlayerCollision_Own : MonoBehaviour
             inRange = true;
             bool you = otherTmp.transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled;
             hasStar = you;
-            print("able to get star");
+            print(starSteal);
             print(hasStar);
 
         }
