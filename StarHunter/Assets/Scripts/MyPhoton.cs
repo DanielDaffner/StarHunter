@@ -280,7 +280,8 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         //         print("peter" + time);
         //         time -= Time.deltaTime;
         //       }
-        PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
+        //PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
+        //PhotonNetwork.SendAllOutgoingCommands();
         PhotonNetwork.Disconnect();
         mainMenu.SetActive(true);
         JoinCreateLobby.SetActive(false);
