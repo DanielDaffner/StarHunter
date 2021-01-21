@@ -93,7 +93,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         //startGame();
         connected = true;
         playerNumber = PhotonNetwork.PlayerList.Length;
-        GetComponent<PhotonView>().RPC("showNamesinLobby", RpcTarget.All);
+       // GetComponent<PhotonView>().RPC("showNamesinLobby", RpcTarget.All);
         lobbyMainButton.SetActive(true);
       //  PhotonNetwork.LocalPlayer.n
     }
@@ -104,7 +104,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         returnToStartMenu();    
     }
 
-    [PunRPC]
+    
 
     public void showNamesinLobby()
     {
@@ -125,12 +125,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         if(playerNumber>PhotonNetwork.PlayerList.Length)
         playerNumber--;
         print("playerNumber after decrease" +playerNumber);
-            float time = 0.5f;
-            while (time > 0)
-             {
-                 //print("peter" + time);
-                 time -= Time.deltaTime;
-               }
+
     }
 
     [PunRPC]
@@ -219,6 +214,10 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
+        if (lobbyMain.activeSelf)
+        {
+            showNamesinLobby();
+       
         print("playlistlength" + PhotonNetwork.PlayerList.Length);
         //print(playerNumber);
         if (PhotonNetwork.IsMasterClient)
@@ -228,6 +227,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         else
         {
             startButton.SetActive(false);
+            }
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
