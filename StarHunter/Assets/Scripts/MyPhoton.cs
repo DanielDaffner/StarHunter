@@ -120,9 +120,11 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    public void decreasePlayerNumber(int number)
+    public void decreasePlayerNumber(string number)
     {
-        if(playerNumber>number)
+        int result;
+        int.TryParse(number, out result);
+        if (playerNumber>result)
         playerNumber--;
         print("playerNumber after decrease" +playerNumber);
 
@@ -266,7 +268,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         
         if (lobbyMain.activeSelf)
         {
-            GetComponent<PhotonView>().RPC("decreasePlayerNumber", RpcTarget.All,playerNumber);
+            GetComponent<PhotonView>().RPC("decreasePlayerNumber", RpcTarget.All, playerNumber.ToString());
             PhotonNetwork.SendAllOutgoingCommands();
             //GetComponent<PhotonView>().RPC("showNamesinLobby", RpcTarget.All);
             //PhotonNetwork.SendAllOutgoingCommands();
