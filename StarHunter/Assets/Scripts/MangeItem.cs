@@ -16,10 +16,10 @@ public class MangeItem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.RotateAround(Vector3.up,1*Time.deltaTime);
         if( !child.activeInHierarchy) {
             if (respawnTimer <= 0) {
-                respawnTimer = 2f;
+                respawnTimer = 5f;
                 child.SetActive(true);
                 child.GetComponent<ItemScript>().refresh();
             } else {
