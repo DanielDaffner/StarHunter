@@ -212,7 +212,13 @@ public class MyPhoton : MonoBehaviourPunCallbacks
 
         print(playerNumber);
         if (PhotonNetwork.IsMasterClient)
+        {
             startButton.SetActive(true);
+        }
+        else
+        {
+            startButton.SetActive(false);
+        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!JoinCreateLobby.activeSelf&&!mainMenu.activeSelf) {
