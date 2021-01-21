@@ -210,6 +210,11 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         {
             newPlayer.GetComponent<PhotonView>().RPC("setMaterialYellow", RpcTarget.AllBuffered);
         }
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.CurrentRoom.IsOpen = false;
+        }
     }
 
 
