@@ -131,12 +131,6 @@ public class MyPhoton : MonoBehaviourPunCallbacks
 
     }
 
-    [PunRPC]
-    public void hostLeft()
-    {
-        
-        returnToStartMenu();
-    }
 
 
 
