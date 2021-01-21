@@ -76,8 +76,6 @@ public class MyPhoton : MonoBehaviourPunCallbacks
 
     }
 
-    
-
     public void createLobby()
     {
         RoomOptions roomOptions = new RoomOptions();
@@ -96,6 +94,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         playerNumber = PhotonNetwork.PlayerList.Length;
         GetComponent<PhotonView>().RPC("showNamesinLobby", RpcTarget.All);
         lobbyMainButton.SetActive(true);
+      //  PhotonNetwork.LocalPlayer.n
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message)
@@ -117,7 +116,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     [PunRPC]
     public void decreasePlayerNumber()
     {
-        print("PeterZWegatsEier");
+        if(playerNumber>PhotonNetwork.PlayerList.Length)
         playerNumber--;
         print(playerNumber);
     }
@@ -173,12 +172,12 @@ public class MyPhoton : MonoBehaviourPunCallbacks
 
         GameObject newPlayer = PhotonNetwork.Instantiate("Character1", spawn, Quaternion.identity);
         newPlayer.transform.Rotate(Vector3.up, -90);
-
+        newPlayer.tag = "OwnPlayer";
         GameObject.Find("CM vcam1").GetComponent<CinemachineFreeLook>().Follow = newPlayer.transform;
         GameObject.Find("CM vcam1").GetComponent<CinemachineFreeLook>().LookAt = newPlayer.transform;
 
         print("Actor Number" +PhotonNetwork.LocalPlayer.ActorNumber);
-        if (PhotonNetwork.IsMasterClient)
+        if (playerNumber==1)
         {
 
 
@@ -188,17 +187,17 @@ public class MyPhoton : MonoBehaviourPunCallbacks
             newPlayer.GetComponent<PhotonView>().RPC("setMaterialRed", RpcTarget.AllBuffered);
         }
 
-       else if (PhotonNetwork.LocalPlayer.ActorNumber % 3 == 0)
+       else if (playerNumber == 2)
         {
             newPlayer.GetComponent<PhotonView>().RPC("setMaterialGreen", RpcTarget.AllBuffered);
         }
 
-       else if (PhotonNetwork.LocalPlayer.ActorNumber % 3 == 1)
+       else if (playerNumber == 3)
         {
             newPlayer.GetComponent<PhotonView>().RPC("setMaterialBlue", RpcTarget.AllBuffered);
         }
 
-        else if (PhotonNetwork.LocalPlayer.ActorNumber % 3 == 2)
+        else if (playerNumber == 4)
         {
             newPlayer.GetComponent<PhotonView>().RPC("setMaterialYellow", RpcTarget.AllBuffered);
         }
@@ -230,7 +229,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
                 //     return;
                 //   }
                 //  else
-                //GetComponent<PhotonView>().RPC("decreasePlayerNumber", RpcTarget.AllViaServer);
+                GetComponent<PhotonView>().RPC("decreasePlayerNumber", RpcTarget.AllViaServer);
                 exit_gracefully();
             }
 
@@ -250,7 +249,26 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     
 }
 
- 
+    [PunRPC]
+    public void addScore(int number)
+    {
+        switch (number) {
+            case 1:
+                Points.score1++;
+                break;
+            case 2:
+                Points.score1++;
+                break;
+            case 3:
+                Points.score1++;
+                break;
+            case 4:
+                Points.score1++;
+                break;
+        }
+
+    }
+
     public void returnToStartMenu()
 {
         PhotonNetwork.Disconnect();
@@ -268,6 +286,11 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     {
         Application.Quit();
        
+    }
+
+    public int getPlayerNumber()
+    {
+        return playerNumber;
     }
   
 
