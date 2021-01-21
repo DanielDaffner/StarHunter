@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using Cinemachine;
 using Photon.Pun;
@@ -128,7 +129,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     [PunRPC]
     public void hostLeft()
     {
-        exit_gracefully();
+        
         returnToStartMenu();
     }
 
@@ -207,7 +208,6 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         }
     }
 
-  
 
     // Update is called once per frame
     void Update()
@@ -224,36 +224,12 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!JoinCreateLobby.activeSelf&&!mainMenu.activeSelf) {
-
-                // if (PhotonNetwork.IsMasterClient) {
-
-                //      print("leave when with master");
-                //    GetComponent<PhotonView>().RPC("hostLeft", RpcTarget.AllViaServer);
-                //     return;
-                //   }
-                //  else
-                GetComponent<PhotonView>().RPC("decreasePlayerNumber", RpcTarget.AllViaServer);
-                exit_gracefully();
-            }
-
-            returnToStartMenu();
-            
+            returnToStartMenu();   
         }
 
     }
 
-    public void exit_gracefully()
-    {
-        if (lobbyMain.activeSelf) { GetComponent<PhotonView>().RPC("showNamesinLobby", RpcTarget.All); }
-        PhotonNetwork.SendAllOutgoingCommands()
-        connected = false;
-        PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
-       // PhotonNetwork.LeaveRoom();
-      //  PhotonNetwork.LoadLevel(0);
-        PhotonNetwork.Disconnect();
-    
-}
+   
 
     [PunRPC]
     public void addScore(int number)
@@ -280,7 +256,20 @@ public class MyPhoton : MonoBehaviourPunCallbacks
 
     public void returnToStartMenu()
 {
-        if (lobbyMain.activeSelf) { GetComponent<PhotonView>().RPC("showNamesinLobby", RpcTarget.All); }
+        if (lobbyMain.activeSelf)
+        {
+            GetComponent<PhotonView>().RPC("decreasePlayerNumber", RpcTarget.All);
+            GetComponent<PhotonView>().RPC("showNamesinLobby", RpcTarget.All);
+            PhotonNetwork.SendAllOutgoingCommands();
+        }
+
+       //     float time = 10.5f;
+        //    while (time > 0)
+       //     {
+       //         print("peter" + time);
+       //         time -= Time.deltaTime;
+      //      }
+        
         PhotonNetwork.Disconnect();
         mainMenu.SetActive(true);
         JoinCreateLobby.SetActive(false);
