@@ -377,6 +377,56 @@ PrefabInstance:
       propertyPath: m_Name
       value: StarGhost
       objectReference: {fileID: 0}
+    - target: {fileID: 1792293235011278393, guid: 040a5e794a4ac4a5ca73e34f0d57266c,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1792293235011278393, guid: 040a5e794a4ac4a5ca73e34f0d57266c,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1792293235011278393, guid: 040a5e794a4ac4a5ca73e34f0d57266c,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1792293235011278395, guid: 040a5e794a4ac4a5ca73e34f0d57266c,
+        type: 3}
+      propertyPath: ShapeModule.type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1792293235011278395, guid: 040a5e794a4ac4a5ca73e34f0d57266c,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 2.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1792293235011278395, guid: 040a5e794a4ac4a5ca73e34f0d57266c,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 7.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 1792293235011278395, guid: 040a5e794a4ac4a5ca73e34f0d57266c,
+        type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1792293235011278395, guid: 040a5e794a4ac4a5ca73e34f0d57266c,
+        type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1792293235011278395, guid: 040a5e794a4ac4a5ca73e34f0d57266c,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 5.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 1792293235011278395, guid: 040a5e794a4ac4a5ca73e34f0d57266c,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 2257772698069730273, guid: 040a5e794a4ac4a5ca73e34f0d57266c,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -59,6 +59,7 @@ public class StarSwitch : MonoBehaviour
             other.RPC("switchOn", RpcTarget.AllBuffered);
             gotHit = false;
         }
+        transform.Rotate(new Vector3(1, 0, 0), 1);
     }
 
 }
