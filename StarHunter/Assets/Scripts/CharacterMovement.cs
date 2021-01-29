@@ -9,7 +9,7 @@ public class CharacterMovement : MonoBehaviour {
     public CharacterController controller;
     public PlayerCollision_Own playerCollision_Own;
 
-    public float speed = 20f;
+    public float speed = 10f;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
     public float rotateSpeed = 0.6f;
@@ -41,6 +41,9 @@ public class CharacterMovement : MonoBehaviour {
     void Update() {
         if (!photonView.IsMine) return;
 
+        //adjust speed
+        if (playerBody.position.y < 2.5) { speed = 5f; } else { speed = 10f; }
+
         //test
         transform.Rotate(0, Input.GetAxisRaw("Rotate") * 60 * Time.deltaTime, 0);
 
@@ -49,6 +52,7 @@ public class CharacterMovement : MonoBehaviour {
         float z = Input.GetAxisRaw("Vertical");
 
         Vector3 move = transform.right * x + transform.forward * z;
+        
         if (bonusMsTime > 0) {
             controller.Move(move.normalized * speed * Time.deltaTime * 2f);
             bonusMsTime -= Time.deltaTime;
