@@ -11961,7 +11961,7 @@ PrefabInstance:
     - target: {fileID: 8677262751486435801, guid: b24a4370ce7d1a745a7b481f4314a4ce,
         type: 3}
       propertyPath: viewIdField
-      value: 3
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b24a4370ce7d1a745a7b481f4314a4ce, type: 3}
@@ -21818,7 +21818,7 @@ PrefabInstance:
     - target: {fileID: 8677262751486435801, guid: b24a4370ce7d1a745a7b481f4314a4ce,
         type: 3}
       propertyPath: viewIdField
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b24a4370ce7d1a745a7b481f4314a4ce, type: 3}
@@ -23063,7 +23063,7 @@ PrefabInstance:
     - target: {fileID: 2031308888044437316, guid: 75a88e7fa1c16464fb24a1f3eab6a57c,
         type: 3}
       propertyPath: viewIdField
-      value: 1
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2031308888044437322, guid: 75a88e7fa1c16464fb24a1f3eab6a57c,
         type: 3}
@@ -23597,7 +23597,7 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents: []
-  viewIdField: 6
+  viewIdField: 10
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!4 &1862170691 stripped
@@ -25559,7 +25559,7 @@ PrefabInstance:
     - target: {fileID: 8677262751486435801, guid: b24a4370ce7d1a745a7b481f4314a4ce,
         type: 3}
       propertyPath: viewIdField
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b24a4370ce7d1a745a7b481f4314a4ce, type: 3}
