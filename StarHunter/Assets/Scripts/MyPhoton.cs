@@ -233,7 +233,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            returnToStartMenu();   
+           // returnToStartMenu();   
         }
 
     }
