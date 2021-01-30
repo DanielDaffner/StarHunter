@@ -94,10 +94,11 @@ public class CharacterMovement : MonoBehaviour {
         controller.Move(velocity * Time.deltaTime);
 
         //Hit
-        if (Input.GetMouseButton(0)) {
-            print("try hit");
-            playerCollision_Own.hit();
-        }
+        //if (Input.GetMouseButton(0)) {
+       //     print("try hit");
+        //    playerCollision_Own.hit();
+       // }
+
         if (Input.GetMouseButton(1)) {
             if (hasItem) {
                 if (itemType == 0) {
