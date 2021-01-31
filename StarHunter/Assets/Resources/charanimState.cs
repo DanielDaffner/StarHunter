@@ -12,6 +12,7 @@ public class charanimState : MonoBehaviour {
     AudioSource audioSJump;
     AudioSource audioSJump2;
     int walkingHash;
+    bool canairjump;
 
     // Start is called before the first frame update
     void Start() {
@@ -21,7 +22,7 @@ public class charanimState : MonoBehaviour {
         audioSJump = GetComponents<AudioSource>()[2];
         audioSJump2 = GetComponents<AudioSource>()[3];
         animator = GetComponent<Animator>();
-        walkingHash = Animator.StringToHash("walking");
+        walkingHash = Animator.StringToHash("run");
     }
 
     // Update is called once per frame
@@ -56,8 +57,9 @@ public class charanimState : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.Space)) {
 
-            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Armature|myJump") && GetComponentInParent<CharacterMovement>().canAirJump && !GetComponentInParent<CharacterMovement>().isGrounded) {
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Armature|myJump") && canairjump && (!(GetComponentInParent<CharacterMovement>().isGrounded))) {
                 animator.SetBool("jump2", true);
+                canairjump = false;
                 if (!audioSJump2.isPlaying) {
                     audioSJump2.Play();
                 }
@@ -72,6 +74,7 @@ public class charanimState : MonoBehaviour {
         if (GetComponentInParent<CharacterMovement>().isGrounded) {
             animator.SetBool("jump", false);
             animator.SetBool("jump2", false);
+            canairjump = true;
         }
         
 
