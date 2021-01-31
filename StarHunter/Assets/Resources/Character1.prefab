@@ -311,6 +311,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   playerBody: {fileID: 222578991902489995}
+  isGrounded: 0
   canAirJump: 1
   hasItem: 0
   itemType: 0

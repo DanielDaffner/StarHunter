@@ -56,15 +56,24 @@ public class charanimState : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.Space)) {
 
-            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Armature|myJump") && GetComponentInParent<CharacterMovement>().canAirJump)
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Armature|myJump") && GetComponentInParent<CharacterMovement>().canAirJump && !GetComponentInParent<CharacterMovement>().isGrounded) {
                 animator.SetBool("jump2", true);
-            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Armature|myJump"))
-                animator.SetBool("jump", true);
+                if (!audioSJump2.isPlaying) {
+                    audioSJump2.Play();
+                }
+            }
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Armature|myJump") && GetComponentInParent<CharacterMovement>().isGrounded) {
+                 animator.SetBool("jump", true);
+               if (!audioSJump.isPlaying) {
+                    audioSJump.Play();
+                }
+            }
         }
-        else {
+        if (GetComponentInParent<CharacterMovement>().isGrounded) {
             animator.SetBool("jump", false);
             animator.SetBool("jump2", false);
         }
+        
 
         //if player is not pressing a key
 

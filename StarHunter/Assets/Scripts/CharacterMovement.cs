@@ -24,7 +24,7 @@ public class CharacterMovement : MonoBehaviour {
     public Transform playerBody;
     Vector3 velocity;
 
-    bool isGrounded;
+    public bool isGrounded;
     public bool canAirJump = true;
     PhotonView photonView;
 
