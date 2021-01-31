@@ -55,28 +55,29 @@ public class charanimState : MonoBehaviour {
             audioSWalk.Stop();
         }
 
-        if (Input.GetKey(KeyCode.Space)) {
+        if (GetComponentInParent<CharacterMovement>().isGrounded) {
+            animator.SetBool("jump", false);
+            animator.SetBool("jump2", false);
+            canairjump = true;
+        }
 
-            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Armature|myJump") && canairjump && (!(GetComponentInParent<CharacterMovement>().isGrounded))) {
+        if (Input.GetButtonDown("Jump") && (GetComponentInParent<CharacterMovement>().isGrounded || canairjump)) {
+
+            if (!GetComponentInParent<CharacterMovement>().isGrounded && canairjump) {
                 animator.SetBool("jump2", true);
                 canairjump = false;
                 if (!audioSJump2.isPlaying) {
                     audioSJump2.Play();
                 }
             }
-            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Armature|myJump") && GetComponentInParent<CharacterMovement>().isGrounded) {
-                 animator.SetBool("jump", true);
-               if (!audioSJump.isPlaying) {
+            if (GetComponentInParent<CharacterMovement>().isGrounded) {
+                animator.SetBool("jump", true);
+                if (!audioSJump.isPlaying) {
                     audioSJump.Play();
                 }
             }
         }
-        if (GetComponentInParent<CharacterMovement>().isGrounded) {
-            animator.SetBool("jump", false);
-            animator.SetBool("jump2", false);
-            canairjump = true;
-        }
-        
+
 
         //if player is not pressing a key
 
@@ -97,6 +98,7 @@ public class charanimState : MonoBehaviour {
         else {
             animator.SetBool("hit", false);
         }
+        transform.localPosition = new Vector3(0, -1.1f, 0);
     }
 
 
