@@ -20,22 +20,22 @@ public class Points : MonoBehaviour
 
     public MyPhoton myPhoton;
 
-    bool keepIncrementing = false;
+    static bool keepIncrementing = false;
 
     // Start is called before the first frame update
     void Start()
     {
-       
+     
+    }
 
-        StartCoroutine(IncrementEachSecond()); //pts
+    public void startRoutine()
+    {
+        StartCoroutine(IncrementEachSecond()); 
     }
 
     // Update is called once per frame
     void Update()
     {
-
-       
-
 
         if (PhotonNetwork.PlayerList.Length >= 1)
         {
@@ -66,9 +66,10 @@ public class Points : MonoBehaviour
 
     IEnumerator IncrementEachSecond()
     {
-        keepIncrementing = true;
+      
         while (gameObject.activeSelf)
-        {   
+        {
+          
             if (GameObject.FindGameObjectWithTag("OwnPlayer").transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled)
             {
             myPhoton.GetComponent<PhotonView>().RPC("addScore", RpcTarget.AllBuffered, myPhoton.getPlayerNumber());
@@ -76,10 +77,12 @@ public class Points : MonoBehaviour
         }
             else
             {
+               
                 yield return new WaitForSeconds(1);
             }
         }
        
      }
+
 
 }

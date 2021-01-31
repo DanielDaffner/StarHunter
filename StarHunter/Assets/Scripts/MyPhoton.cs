@@ -149,7 +149,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     public void startGame()
     {
 
-
+       
         GetComponent<PhotonView>().RPC("gameOn", RpcTarget.AllBuffered);
     }
 
@@ -163,7 +163,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
 
         menu.SetActive(false);
         game.SetActive(true);
-
+  
         //
         Vector3 spawn = new Vector3();
 
@@ -222,6 +222,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         {
             PhotonNetwork.CurrentRoom.IsOpen = false;
         }
+        game.GetComponent<Points>().startRoutine();
     }
 
 
