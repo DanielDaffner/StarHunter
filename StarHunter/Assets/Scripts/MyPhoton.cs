@@ -242,6 +242,10 @@ public class MyPhoton : MonoBehaviourPunCallbacks
             startButton.SetActive(false);
             }
         }
+        if (Points.scores[playerNumber] > 99)
+        {
+            GetComponent<PhotonView>().RPC("endGame", RpcTarget.All);
+        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
            returnToStartMenu();   
@@ -271,7 +275,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
             default:
                 break;
         }
-
+  
     }
 
     public void returnToStartMenu()
@@ -314,6 +318,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         startStar.GetComponent<MeshRenderer>().enabled = true;
     }
 
+    [PunRPC]
     public void endGame()
     {
         gameOverImage.SetActive(true);
@@ -359,6 +364,8 @@ public class MyPhoton : MonoBehaviourPunCallbacks
                 }
                 break;
         }
+        Thread.Sleep(2000);
+        returnToStartMenu();
 
     }
     public void mainMenuQuit()
