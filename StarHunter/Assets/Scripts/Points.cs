@@ -37,35 +37,29 @@ public class Points : MonoBehaviour
        
 
 
-        if (PhotonNetwork.PlayerList.Length == 1)
+        if (PhotonNetwork.PlayerList.Length >= 1)
         {
            
-            score1T.text = "Player 1: " + score1; 
+            score1T.text = "" + score1; 
                     
         }
         
 
-        if (PhotonNetwork.PlayerList.Length == 2)
+        if (PhotonNetwork.PlayerList.Length >= 2)
         {
-            score1T.text = "Player 1: " + score1;
-            score2T.text = "Player 2: " + score2;
+            score2T.text = "" + score2;
 
         }
         
-        if (PhotonNetwork.PlayerList.Length == 3)
+        if (PhotonNetwork.PlayerList.Length >= 3)
         {
-            score1T.text = "Player 1: " + score1;
-            score2T.text = "Player 2: " + score2;
-            score3T.text = "Player 3: " + score3;
+            score3T.text = "" + score3;
         }
             
 
-        if (PhotonNetwork.PlayerList.Length == 4)
+        if (PhotonNetwork.PlayerList.Length >= 4)
         {
-            score1T.text = "Player 1: " + score1;
-            score2T.text = "Player 2: " + score2;
-            score3T.text = "Player 3: " + score3;
-            score4T.text = "Player 4: " + score4;
+            score4T.text = "" + score4;
         }
 
     }
