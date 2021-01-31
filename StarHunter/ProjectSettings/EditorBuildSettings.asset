@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/map_island.unity
-    guid: cccf9bf1e4a133148a8252b26efe42cb
+    path: Assets/Scenes/map_island_low_poly_water.unity
+    guid: 875358c78f770db458a4ce300479026e
   m_configObjects: {}

@@ -37,7 +37,8 @@ public class Points : MonoBehaviour
 
 
         if (PhotonNetwork.PlayerList.Length == 1)
-        {              
+        {
+           
             score1T.text = "Player 1: " + score1; 
                     
         }

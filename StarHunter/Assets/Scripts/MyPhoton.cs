@@ -27,6 +27,10 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     public GameObject lobbyMainButton;
     public GameObject startButton;
 
+    public Camera cam;
+    Vector3 camPos;
+    Quaternion camRot;
+
     public int playerNumber;
     private bool connected;
      
@@ -42,12 +46,17 @@ public class MyPhoton : MonoBehaviourPunCallbacks
 
     public Transform[] spawnPositions = new Transform[4];
 
+   
+
     // Start is called before the first frame update
-  void Start()
+    void Start()
     {
+        camPos = cam.transform.position;
+        camRot = cam.transform.rotation;
         //connect to master server
-        Cursor.lockState = CursorLockMode.Confined;
-       
+        // Cursor.lockState = CursorLockMode.Confined;
+     
+        Cursor.visible = true;
 
     }
 
@@ -187,7 +196,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
 
             print(PhotonNetwork.IsMasterClient);
             
-            newPlayer.transform.Find("StarGhost").GetComponent<PhotonView>().RPC("switchOn", RpcTarget.AllBuffered);
+           // newPlayer.transform.Find("StarGhost").GetComponent<PhotonView>().RPC("switchOn", RpcTarget.AllBuffered);
             newPlayer.GetComponent<PhotonView>().RPC("setMaterialRed", RpcTarget.AllBuffered);
         }
 
@@ -233,7 +242,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-           // returnToStartMenu();   
+           returnToStartMenu();   
         }
 
     }
@@ -274,6 +283,8 @@ public class MyPhoton : MonoBehaviourPunCallbacks
             //PhotonNetwork.SendAllOutgoingCommands();
         }
 
+     
+
         //     float time = 10.5f;
         //    while (time > 0)
         //     {
@@ -291,6 +302,9 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         game.SetActive(false);
         menu.SetActive(true);
         Cursor.lockState = CursorLockMode.Confined;
+        cam.transform.position = camPos;
+        cam.transform.rotation = camRot;
+        cam.farClipPlane = 5000;
 }
 
     public void mainMenuQuit()
