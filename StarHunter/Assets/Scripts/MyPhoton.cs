@@ -233,25 +233,31 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         {
             Thread.Sleep(2000);
             returnToStartMenu();
-        }
-        if (lobbyMain.activeSelf&&connected)
-        {
-            showNamesinLobby();
-       
-        print("playlistlength" + PhotonNetwork.PlayerList.Length);
-        //print(playerNumber);
-        if (PhotonNetwork.IsMasterClient)
-        {
-            startButton.SetActive(true);
+
         }
         else
         {
-            startButton.SetActive(false);
+
+
+            if (lobbyMain.activeSelf && connected)
+            {
+                showNamesinLobby();
+
+                print("playlistlength" + PhotonNetwork.PlayerList.Length);
+                //print(playerNumber);
+                if (PhotonNetwork.IsMasterClient)
+                {
+                    startButton.SetActive(true);
+                }
+                else
+                {
+                    startButton.SetActive(false);
+                }
             }
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-           returnToStartMenu();   
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                returnToStartMenu();
+            }
         }
 
     }
