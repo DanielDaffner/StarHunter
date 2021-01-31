@@ -26,6 +26,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     public GameObject lobbyMain;
     public GameObject lobbyMainButton;
     public GameObject startButton;
+    public GameObject startStar;
 
     public Camera cam;
     Vector3 camPos;
@@ -305,7 +306,12 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         cam.transform.position = camPos;
         cam.transform.rotation = camRot;
         cam.farClipPlane = 5000;
-}
+        Points.score1 = 0;
+        Points.score2 = 0;
+        Points.score3 = 0;
+        Points.score4 = 0;
+        startStar.GetComponent<MeshRenderer>().enabled = true;
+    }
 
     public void mainMenuQuit()
     {
