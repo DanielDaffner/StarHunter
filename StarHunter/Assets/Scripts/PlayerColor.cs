@@ -21,22 +21,22 @@ public class PlayerColor : MonoBehaviour
     [PunRPC]
     void setMaterialRed()
     {
-        photonView.GetComponentInChildren<SkinnedMeshRenderer>().material = mRed;
+        photonView.GetComponentInChildren<SkinnedMeshRenderer>().materials[1] = mRed;
     }
     [PunRPC]
     void setMaterialGreen()
     {
-        photonView.GetComponentInChildren<SkinnedMeshRenderer>().material = mGreen;
+        photonView.GetComponentInChildren<SkinnedMeshRenderer>().materials[1] = mGreen;
     }
     [PunRPC]
     void setMaterialBlue()
     {
-        photonView.GetComponentInChildren<SkinnedMeshRenderer>().material = mBlue;
+        photonView.GetComponentInChildren<SkinnedMeshRenderer>().materials[1] = mBlue;
     }
     [PunRPC]
     void setMaterialYellow()
     {
-        photonView.GetComponentInChildren<SkinnedMeshRenderer>().material = mYellow;
+        photonView.GetComponentInChildren<SkinnedMeshRenderer>().materials[1] = mYellow;
     }
 
 
