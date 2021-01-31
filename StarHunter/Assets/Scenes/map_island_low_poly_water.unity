@@ -15238,7 +15238,7 @@ PrefabInstance:
     - target: {fileID: 4485439653791661323, guid: c10250dfa4a9ba04b8301a7950fd4e02,
         type: 3}
       propertyPath: far clip plane
-      value: 5000
+      value: 800
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c10250dfa4a9ba04b8301a7950fd4e02, type: 3}

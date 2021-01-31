@@ -228,6 +228,11 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
+        if (gameOverImage.activeSelf)
+        {
+            Thread.Sleep(2000);
+            returnToStartMenu();
+        }
         if (lobbyMain.activeSelf&&connected)
         {
             showNamesinLobby();
@@ -259,19 +264,19 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         switch (number) {
             case 1:
                 Points.score1++;
-                if (Points.score1 >= 100) endGame();
+                if (Points.score1 >= 50) endGame();
                 break;
             case 2:
                 Points.score2++;
-                if (Points.score1 >= 100) endGame();
+                if (Points.score1 >= 50) endGame();
                 break;
             case 3:
                 Points.score3++;
-                if (Points.score1 >= 100) endGame();
+                if (Points.score1 >= 50) endGame();
                 break;
             case 4:
                 Points.score4++;
-                if (Points.score1 >= 100) endGame();
+                if (Points.score1 >= 50) endGame();
                 break;
             default:
                 break;
@@ -321,11 +326,11 @@ public class MyPhoton : MonoBehaviourPunCallbacks
 
     public void endGame()
     {
-        gameOverImage.SetActive(true);
+        gameOverImage.gameObject.SetActive(true);
         switch (playerNumber)
         {
             case 1:
-                if (Points.score1 >= 100) 
+                if (Points.score1 >= 50) 
                     { 
                     gameOverText.GetComponent<Text>().text = "You won!";
                 }
@@ -334,7 +339,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
                 }
                     break;
             case 2:
-                if (Points.score2 >= 100)
+                if (Points.score2 >= 50)
                 {
                     gameOverText.GetComponent<Text>().text = "You won!";
                 }
@@ -344,7 +349,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
                 }
                 break;
             case 3:
-                if (Points.score3 >= 100)
+                if (Points.score3 >= 50)
                 {
                     gameOverText.GetComponent<Text>().text = "You won!";
                 }
@@ -354,7 +359,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
                 }
                 break;
             case 4:
-                if (Points.score4 >= 100)
+                if (Points.score4 >= 50)
                 {
                     gameOverText.GetComponent<Text>().text = "You won!";
                 }
@@ -364,9 +369,8 @@ public class MyPhoton : MonoBehaviourPunCallbacks
                 }
                 break;
         }
-        
-        Thread.Sleep(2000);
-        returnToStartMenu();
+
+     
 
     }
     public void mainMenuQuit()
@@ -379,6 +383,8 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     {
         return playerNumber;
     }
-  
+
+
+
 
 }
