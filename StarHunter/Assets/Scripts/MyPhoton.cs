@@ -242,9 +242,12 @@ public class MyPhoton : MonoBehaviourPunCallbacks
             startButton.SetActive(false);
             }
         }
-        if (Points.scores[playerNumber] > 99)
+        if (game.activeSelf) { 
+        if (Points.scores[playerNumber-1] > 99)
         {
-            GetComponent<PhotonView>().RPC("endGame", RpcTarget.All);
+           
+            GetComponent<PhotonView>().RPC("endGame", RpcTarget.AllBuffered);
+        }
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
