@@ -12,7 +12,6 @@ public class Points : MonoBehaviour
     public static int score3 = 0;
     public static int score4 = 0;
 
-    public static int[] scores = { score1, score2, score3, score4 };
 
     public Text score1T;
     public Text score2T;
@@ -34,7 +33,8 @@ public class Points : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+       
 
 
         if (PhotonNetwork.PlayerList.Length == 1)
