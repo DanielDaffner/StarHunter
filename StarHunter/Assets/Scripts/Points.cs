@@ -73,7 +73,7 @@ public class Points : MonoBehaviour
     {
         keepIncrementing = true;
         while (gameObject.activeSelf)
-        {
+        {   
             if (GameObject.FindGameObjectWithTag("OwnPlayer").transform.Find("StarGhost").GetComponent<MeshRenderer>().enabled)
             {
             myPhoton.GetComponent<PhotonView>().RPC("addScore", RpcTarget.AllBuffered, myPhoton.getPlayerNumber());

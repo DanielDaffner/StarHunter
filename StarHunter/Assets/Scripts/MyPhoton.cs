@@ -47,7 +47,8 @@ public class MyPhoton : MonoBehaviourPunCallbacks
 
     public Transform[] spawnPositions = new Transform[4];
 
-   
+    public GameObject gameOverImage;
+    public GameObject gameOverText;
 
     // Start is called before the first frame update
     void Start()
@@ -313,6 +314,53 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         startStar.GetComponent<MeshRenderer>().enabled = true;
     }
 
+    public void endGame()
+    {
+        gameOverImage.SetActive(true);
+        switch (playerNumber)
+        {
+            case 1:
+                if (Points.score1 == 100) 
+                    { 
+                    gameOverText.GetComponent<Text>().text = "You won!";
+                }
+                else {
+                    gameOverText.GetComponent<Text>().text = "You lost.";
+                }
+                    break;
+            case 2:
+                if (Points.score2 == 100)
+                {
+                    gameOverText.GetComponent<Text>().text = "You won!";
+                }
+                else
+                {
+                    gameOverText.GetComponent<Text>().text = "You lost.";
+                }
+                break;
+            case 3:
+                if (Points.score3 == 100)
+                {
+                    gameOverText.GetComponent<Text>().text = "You won!";
+                }
+                else
+                {
+                    gameOverText.GetComponent<Text>().text = "You lost.";
+                }
+                break;
+            case 4:
+                if (Points.score4 == 100)
+                {
+                    gameOverText.GetComponent<Text>().text = "You won!";
+                }
+                else
+                {
+                    gameOverText.GetComponent<Text>().text = "You lost.";
+                }
+                break;
+        }
+
+    }
     public void mainMenuQuit()
     {
         Application.Quit();
