@@ -204,8 +204,8 @@ public class MyPhoton : MonoBehaviourPunCallbacks
 
 
             print(PhotonNetwork.IsMasterClient);
-            
-           // newPlayer.transform.Find("StarGhost").GetComponent<PhotonView>().RPC("switchOn", RpcTarget.AllBuffered);
+            startStar = PhotonNetwork.Instantiate("StartStar",new Vector3(10.007f, 9.167f, 21.081f),Quaternion.identity);
+            // newPlayer.transform.Find("StarGhost").GetComponent<PhotonView>().RPC("switchOn", RpcTarget.AllBuffered);
             newPlayer.GetComponent<PhotonView>().RPC("setMaterialRed", RpcTarget.AllBuffered);
         }
 
@@ -262,7 +262,8 @@ public class MyPhoton : MonoBehaviourPunCallbacks
             }
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                returnToStartMenu();
+
+                GetComponent<PhotonView>().RPC("endAll", RpcTarget.All);
             }
         }
 
@@ -329,7 +330,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         lobbyMainButton.SetActive(false);
         startButton.SetActive(false);
         lobbyMain.SetActive(false);
-        startStar.GetComponent<MeshRenderer>().enabled = true;
+        //startStar.GetComponent<MeshRenderer>().enabled = true;
    
         game.SetActive(false);
         menu.SetActive(true);
@@ -399,6 +400,14 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     {
         Application.Quit();
        
+    }
+
+    [PunRPC]
+
+    public void endAll()
+    {
+        PhotonNetwork.SendAllOutgoingCommands();
+        returnToStartMenu();
     }
 
     public int getPlayerNumber()
