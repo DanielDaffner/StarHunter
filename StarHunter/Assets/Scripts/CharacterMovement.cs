@@ -23,7 +23,7 @@ public class CharacterMovement : MonoBehaviour {
     public LayerMask groundMask;
 
     public Transform playerBody;
-    Vector3 velocity;
+    public Vector3 velocity;
 
     public bool isGrounded;
     public bool canAirJump = true;
