@@ -233,7 +233,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     {
         if (gameOverImage.activeSelf)
         {
-            Thread.Sleep(2000);
+            if (Input.GetKeyDown(KeyCode.Escape))           
             returnToStartMenu();
 
         }
@@ -320,6 +320,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         lobbyMainButton.SetActive(false);
         startButton.SetActive(false);
         lobbyMain.SetActive(false);
+        startStar.GetComponent<MeshRenderer>().enabled = true;
         game.SetActive(false);
         menu.SetActive(true);
         Cursor.lockState = CursorLockMode.Confined;
@@ -330,7 +331,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         Points.score2 = 0;
         Points.score3 = 0;
         Points.score4 = 0;
-        startStar.GetComponent<MeshRenderer>().enabled = true;
+       
         Cursor.visible = true;
         
     }
