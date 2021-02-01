@@ -55,7 +55,7 @@ public class charanimState : MonoBehaviour {
             audioSWalk.Stop();
         }
 
-        if (GetComponentInParent<CharacterMovement>().isGrounded) {
+        if (GetComponentInParent<CharacterMovement>().isGrounded && GetComponentInParent<CharacterMovement>().velocity.y <= 0) {
             animator.SetBool("jump", false);
             animator.SetBool("jump2", false);
             canairjump = true;
