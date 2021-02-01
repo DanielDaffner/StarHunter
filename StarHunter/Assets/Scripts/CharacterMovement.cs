@@ -39,6 +39,7 @@ public class CharacterMovement : MonoBehaviour {
     private void Start() {
         photonView = GetComponent<PhotonView>();
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         ready1 = GameObject.Find("Ready1");
         ready2 = GameObject.Find("Ready2");
     }
