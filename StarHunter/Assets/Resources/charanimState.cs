@@ -11,7 +11,6 @@ public class charanimState : MonoBehaviour {
     AudioSource audioSHit;
     AudioSource audioSJump;
     AudioSource audioSJump2;
-    int walkingHash;
     bool canairjump;
 
     // Start is called before the first frame update
@@ -22,14 +21,12 @@ public class charanimState : MonoBehaviour {
         audioSJump = GetComponents<AudioSource>()[2];
         audioSJump2 = GetComponents<AudioSource>()[3];
         animator = GetComponent<Animator>();
-        walkingHash = Animator.StringToHash("run");
     }
 
     // Update is called once per frame
     void Update() {
         if (!photonView.IsMine) return;
 
-        bool walking = animator.GetBool(walkingHash);
         bool forwardPressed = Input.GetKey("w");
         bool backwardPressed = Input.GetKey("s");
         bool leftPressed = Input.GetKey("a");
@@ -48,7 +45,7 @@ public class charanimState : MonoBehaviour {
 
         // if player walks
 
-        if (walking) {
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Armature|myRun")) {
             if (!audioSWalk.isPlaying) audioSWalk.Play();
         }
         else {
