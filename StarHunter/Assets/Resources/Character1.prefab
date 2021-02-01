@@ -316,8 +316,6 @@ MonoBehaviour:
   hasItem: 0
   itemType: 0
   bonusMsTime: 0
-  ready1: {fileID: 7959996421579851024, guid: 563433514b8be224eafe09b0492a2728, type: 3}
-  ready2: {fileID: 4164228272025008174, guid: d3d2b794d6e922e499c5ac7cd1200509, type: 3}
 --- !u!65 &5170216818611237202
 BoxCollider:
   m_ObjectHideFlags: 0

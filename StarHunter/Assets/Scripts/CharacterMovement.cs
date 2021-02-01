@@ -122,8 +122,13 @@ public class CharacterMovement : MonoBehaviour {
             }
             else
             {
-                ready2.SetActive(false);
+                ready1.SetActive(false);
             }
+        }
+        else
+        {
+            ready1.SetActive(false);
+            ready2.SetActive(false);
         }
 
         if (Input.GetMouseButton(1)) {
