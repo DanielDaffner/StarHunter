@@ -331,6 +331,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         Points.score3 = 0;
         Points.score4 = 0;
         startStar.GetComponent<MeshRenderer>().enabled = true;
+        Cursor.visible = true;
         
     }
 
