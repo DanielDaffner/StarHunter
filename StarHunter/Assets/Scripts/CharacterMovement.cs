@@ -106,17 +106,7 @@ public class CharacterMovement : MonoBehaviour {
         //     print("try hit");
         //    playerCollision_Own.hit();
         // }
-        if (ready1 == null)
-        {
-            print("war null");
-            ready1 = GameObject.Find("Ready1");
-          
-        }
-        if(ready2 == null)
-        {
-          
-            ready2 = GameObject.Find("Ready2");
-        }
+     
         print("has item"+hasItem);
         if (hasItem)
         {
