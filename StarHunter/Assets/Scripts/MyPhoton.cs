@@ -32,6 +32,8 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     Vector3 camPos;
     Quaternion camRot;
 
+    
+
     public int playerNumber;
     private bool connected;
      
@@ -60,7 +62,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         // Cursor.lockState = CursorLockMode.Confined;
      
         Cursor.visible = true;
-
+        cam.farClipPlane = 5000;
     }
 
    public void connectToMaster() { 
@@ -329,6 +331,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         Points.score3 = 0;
         Points.score4 = 0;
         startStar.GetComponent<MeshRenderer>().enabled = true;
+        
     }
 
     public void endGame()

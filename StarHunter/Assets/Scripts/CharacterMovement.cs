@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.UI;
 
 
 public class CharacterMovement : MonoBehaviour {
@@ -32,9 +33,14 @@ public class CharacterMovement : MonoBehaviour {
     public int itemType = 0;
     public float bonusMsTime = 0;
 
+    GameObject ready1;
+    GameObject ready2;
+
     private void Start() {
         photonView = GetComponent<PhotonView>();
         Cursor.lockState = CursorLockMode.Locked;
+        ready1 = GameObject.Find("Ready1");
+        ready2 = GameObject.Find("Ready2");
     }
 
     // Update is called once per frame
@@ -95,9 +101,30 @@ public class CharacterMovement : MonoBehaviour {
 
         //Hit
         //if (Input.GetMouseButton(0)) {
-       //     print("try hit");
+        //     print("try hit");
         //    playerCollision_Own.hit();
-       // }
+        // }
+
+        print("has item"+hasItem);
+        if (hasItem)
+        {
+            if (itemType == 0)
+            {
+                ready2.SetActive(true);
+            }
+            else
+            {
+                ready2.SetActive(false);
+            }
+            if (itemType == 1)
+            {
+                ready1.SetActive(true);
+            }
+            else
+            {
+                ready2.SetActive(false);
+            }
+        }
 
         if (Input.GetMouseButton(1)) {
             if (hasItem) {
