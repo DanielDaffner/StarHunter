@@ -19,6 +19,8 @@ public class MyPhoton : MonoBehaviourPunCallbacks
 
     public InputField lobbyname;
 
+    public GameObject ownPlayer;
+
     public GameObject game;
     public GameObject menu;
     public GameObject mainMenu;
@@ -27,7 +29,8 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     public GameObject lobbyMainButton;
     public GameObject startButton;
     public GameObject startStar;
-
+    public GameObject ready1;
+    public GameObject ready2;
     public Camera cam;
     Vector3 camPos;
     Quaternion camRot;
@@ -191,6 +194,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         GameObject newPlayer = PhotonNetwork.Instantiate("Character1", spawn, Quaternion.identity);
         newPlayer.transform.Rotate(Vector3.up, -90);
         newPlayer.tag = "OwnPlayer";
+        ownPlayer = newPlayer;
         GameObject.Find("CM vcam1").GetComponent<CinemachineFreeLook>().Follow = newPlayer.transform;
         GameObject.Find("CM vcam1").GetComponent<CinemachineFreeLook>().LookAt = newPlayer.transform;
 
@@ -304,7 +308,12 @@ public class MyPhoton : MonoBehaviourPunCallbacks
             //PhotonNetwork.SendAllOutgoingCommands();
         }
 
-     
+        if (game.activeSelf)
+        {
+            // Destroy(ownPlayer.GetComponent<CharacterMovement>());
+            ready1.SetActive(true);
+            ready2.SetActive(true);
+        }
 
         //     float time = 10.5f;
         //    while (time > 0)
@@ -321,6 +330,7 @@ public class MyPhoton : MonoBehaviourPunCallbacks
         startButton.SetActive(false);
         lobbyMain.SetActive(false);
         startStar.GetComponent<MeshRenderer>().enabled = true;
+   
         game.SetActive(false);
         menu.SetActive(true);
         Cursor.lockState = CursorLockMode.Confined;

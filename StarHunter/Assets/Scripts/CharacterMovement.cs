@@ -46,6 +46,7 @@ public class CharacterMovement : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        print("Charakter Movement");
         if (!photonView.IsMine) return;
 
         //adjust speed
@@ -105,7 +106,17 @@ public class CharacterMovement : MonoBehaviour {
         //     print("try hit");
         //    playerCollision_Own.hit();
         // }
-
+        if (ready1 == null)
+        {
+            print("war null");
+            ready1 = GameObject.Find("Ready1");
+          
+        }
+        if(ready2 == null)
+        {
+          
+            ready2 = GameObject.Find("Ready2");
+        }
         print("has item"+hasItem);
         if (hasItem)
         {
@@ -128,8 +139,8 @@ public class CharacterMovement : MonoBehaviour {
         }
         else
         {
-            ready1.SetActive(false);
-            ready2.SetActive(false);
+            if(ready1.activeSelf)ready1.SetActive(false);
+            if (ready2.activeSelf) ready2.SetActive(false);
         }
 
         if (Input.GetMouseButton(1)) {
