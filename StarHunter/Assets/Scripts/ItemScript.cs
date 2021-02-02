@@ -17,6 +17,7 @@ public class ItemScript : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
+        if (other.gameObject.tag != "Player" && other.gameObject.tag != "OwnPlayer") return;
         CharacterMovement player = other.gameObject.GetComponent<CharacterMovement>();
         if (!isTaken && !player.hasItem) {
             isTaken = true;

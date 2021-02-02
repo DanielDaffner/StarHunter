@@ -13,7 +13,7 @@ public class CharacterMovement : MonoBehaviour {
     public float speed = 10f;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
-    public float rotateSpeed = 0.3f;
+    public float rotateSpeed = 30f;
 
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
@@ -53,7 +53,7 @@ public class CharacterMovement : MonoBehaviour {
         if (playerBody.position.y < 2.5) { speed = 5f; } else { speed = 10f; }
 
         //test
-        transform.Rotate(0, Input.GetAxisRaw("Rotate") * 60 * Time.deltaTime, 0);
+        transform.Rotate(0, Input.GetAxisRaw("Rotate") * rotateSpeed * Time.deltaTime, 0);
 
         //Movement
         float x = Input.GetAxisRaw("Horizontal");
