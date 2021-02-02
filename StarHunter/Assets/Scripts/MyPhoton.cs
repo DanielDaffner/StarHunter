@@ -285,15 +285,15 @@ public class MyPhoton : MonoBehaviourPunCallbacks
                 break;
             case 2:
                 Points.score2++;
-                if (Points.score1 >= 50) endGame();
+                if (Points.score2 >= 50) endGame();
                 break;
             case 3:
                 Points.score3++;
-                if (Points.score1 >= 50) endGame();
+                if (Points.score3 >= 50) endGame();
                 break;
             case 4:
                 Points.score4++;
-                if (Points.score1 >= 50) endGame();
+                if (Points.score4 >= 50) endGame();
                 break;
             default:
                 break;
