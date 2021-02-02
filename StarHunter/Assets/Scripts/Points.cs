@@ -18,6 +18,8 @@ public class Points : MonoBehaviour
     public Text score3T;
     public Text score4T;
 
+    public GameObject[] scorePanels;
+
     public MyPhoton myPhoton;
 
     static bool keepIncrementing = false;
@@ -30,6 +32,10 @@ public class Points : MonoBehaviour
 
     public void startRoutine()
     {
+        scorePanels[0].SetActive(false);
+        scorePanels[1].SetActive(false);
+        scorePanels[2].SetActive(false);
+        scorePanels[3].SetActive(false);
         StartCoroutine(IncrementEachSecond()); 
     }
 
@@ -40,26 +46,30 @@ public class Points : MonoBehaviour
         if (PhotonNetwork.PlayerList.Length >= 1)
         {
            
-            score1T.text = "" + score1; 
-                    
+            score1T.text = "" + score1;
+            scorePanels[0].SetActive(true);
+
         }
         
 
         if (PhotonNetwork.PlayerList.Length >= 2)
         {
             score2T.text = "" + score2;
+            scorePanels[1].SetActive(true);
 
         }
         
         if (PhotonNetwork.PlayerList.Length >= 3)
         {
             score3T.text = "" + score3;
+            scorePanels[2].SetActive(true);
         }
             
 
         if (PhotonNetwork.PlayerList.Length >= 4)
         {
             score4T.text = "" + score4;
+            scorePanels[3].SetActive(true);
         }
 
     }
