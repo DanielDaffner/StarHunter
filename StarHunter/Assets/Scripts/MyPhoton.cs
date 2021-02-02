@@ -237,9 +237,12 @@ public class MyPhoton : MonoBehaviourPunCallbacks
     {
         if (gameOverImage.activeSelf)
         {
-            if (Input.GetKeyDown(KeyCode.Escape))           
-            returnToStartMenu();
-
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                gameOverImage.SetActive(false);
+                returnToStartMenu();
+            }
+            
         }
         else
         {
