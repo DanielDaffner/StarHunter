@@ -13,7 +13,7 @@ public class CharacterMovement : MonoBehaviour {
     public float speed = 10f;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
-    public float rotateSpeed = 30f;
+    public float rotateSpeed = 45f;
 
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
